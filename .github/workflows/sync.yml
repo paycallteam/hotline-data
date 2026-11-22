@@ -1,0 +1,38 @@
+name: Sync hotline data
+
+on:
+  schedule:
+    - cron: "17 3 * * *" # daily, 03:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch live data
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 https://pay-call.com/hotlines.json -o /tmp/raw.json
+          # Stop if the API returned something broken or an empty list, so the repo keeps the last good copy.
+          count=$(jq '.hotlines | length' /tmp/raw.json)
+          if [ "$count" -lt 10 ]; then echo "Only $count hotlines, keeping old data"; exit 1; fi
+          # generatedAt changes on every request; drop it so a commit only happens when the data changed.
+          jq 'del(.generatedAt)' /tmp/raw.json > data/hotlines.json
+          jq -r '
+            ["id","name","kind","department","country","status","phone_e164","phone_display","hours","source_url","checked_on","menu_route_tested_on","wait_low_min","wait_high_min","wait_median_min","updated_at"],
+            (.hotlines[] | [.id, .name, .kind, .department, .country, .status, .phone.e164, .phone.display, .hours, .source.url, .source.checkedOn, .menuRoute.testedOn, .waitOnHold.lowMinutes, .waitOnHold.highMinutes, .waitOnHold.medianMinutes, .updatedAt])
+            | @csv' /tmp/raw.json > data/hotlines.csv
+
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- data; then echo "No changes"; exit 0; fi
+          git config user.name "paycall-data-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          git commit -m "Update hotline data $(date -u +%F)"
+          git push
