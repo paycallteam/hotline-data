@@ -17,6 +17,7 @@ jobs:
       - name: Fetch live data
         run: |
           set -euo pipefail
+          mkdir -p data
           curl -fsSL --retry 3 https://pay-call.com/hotlines.json -o /tmp/raw.json
           # Stop if the API returned something broken or an empty list, so the repo keeps the last good copy.
           count=$(jq '.hotlines | length' /tmp/raw.json)
