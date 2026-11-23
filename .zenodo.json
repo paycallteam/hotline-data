@@ -1,0 +1,24 @@
+{
+  "title": "PayCall Hotline Data",
+  "upload_type": "dataset",
+  "description": "Official customer-service and government hotline numbers in the U.S., Canada, the UK and Australia, each with the organisation's own source URL and check date; whether the line answered calls through PayCall from abroad; phone-menu routes tested with real calls; and hold times measured on real calls (range and median). Method: https://pay-call.com/hotline-data. Live API: https://pay-call.com/hotlines.json",
+  "creators": [
+    { "name": "PayCall, Inc." }
+  ],
+  "license": "cc-by-4.0",
+  "access_right": "open",
+  "keywords": [
+    "phone numbers",
+    "customer service",
+    "hotlines",
+    "IVR",
+    "hold times",
+    "call center",
+    "open data"
+  ],
+  "related_identifiers": [
+    { "identifier": "https://pay-call.com/hotline-data", "relation": "isDocumentedBy", "resource_type": "other" },
+    { "identifier": "https://pay-call.com/hotlines.json", "relation": "isDerivedFrom", "resource_type": "dataset" }
+  ],
+  "language": "eng"
+}
