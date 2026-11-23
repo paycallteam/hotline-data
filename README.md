@@ -3,6 +3,7 @@
 Open data on customer-service and government hotlines in the **U.S., Canada, the UK, Australia and Germany**:
 
 - **Official numbers and hours**, each with the organisation's own source URL and the date PayCall checked it
+- **Reachable from abroad**: whether calls through PayCall from abroad got through, with the last date. Many toll-free numbers can't be dialled from a foreign phone.
 - **Phone-menu routes tested with real calls**: which keys to press or what to say, what the menu said, and where the call ended
 - **Measured hold times**: wait until a person, as a range and median from real PayCall calls
 
@@ -28,12 +29,15 @@ https://pay-call.com/hotlines.json?id=irs
 https://pay-call.com/hotlines.json?country=gb&kind=bank&status=tested
 ```
 
-`country`: `us`, `ca`, `gb`, `au`, `de`. `status`: `tested` or `listed`. The JSON lists every allowed `kind`.
+`country`: `us`, `ca`, `gb`, `au`, `de`. `status`: `tested` or `listed`. `abroad=confirmed`: only hotlines reached from abroad. The JSON lists every allowed `kind`.
+
+Human-readable page with method and license: https://pay-call.com/hotline-data
 
 ## Fields
 
 | Field | Meaning |
 | --- | --- |
+| `reachableFromAbroad` | `confirmed` with `lastConfirmedOn` once a call through PayCall (used from abroad) connected and the network hasn't refused the number since; `null` until then. Many toll-free numbers can't be dialled from a foreign phone. |
 | `status` | `tested`: PayCall called the line and wrote down the menu route. `listed`: number from the organisation's own page, not tested yet. |
 | `phone.e164` | Number in international format |
 | `hours` | Opening hours as published by the organisation |
