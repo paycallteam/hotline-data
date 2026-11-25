@@ -22,7 +22,7 @@
   "fields": {
     "status": "tested: PayCall called the line and wrote down the phone-menu route (menuRoute); listed: number taken from the organisation's own page, not tested by PayCall yet.",
     "reachableFromAbroad": "confirmed with lastConfirmedOn when a call through PayCall, which people use from abroad, connected to the hotline and no call was refused by the network since; null when not confirmed yet. Many toll-free numbers can't be dialled from a foreign phone; this says whether the line answers calls from abroad through PayCall.",
-    "lastTestCall": "PayCall's newest automatic test call that reached the line: when (testedAt, UTC), which number, and what the line says first (firstAnnouncement, a summary in English; heard: menu, private (asks for account or ID data before anything else), queue, closed or message; options: keypad options heard; asksFirstFor: data the line asks for first; route, for the most-asked hotlines only: the keys pressed or words said from the start, where it ended (queue: the hold queue for an agent; person; private: no way to a person without account or ID data; closed), confirmedOn: the days two or more tests in a row found the same route (only confirmed routes are published), needsAccountData, wayOut: words the line offers instead of account data that worked, secondsToPerson). null until a test call reached the line. Each number is tested about once a month.",
+    "lastTestCall": "PayCall's newest automatic test call that reached the line: when (testedAt, UTC), which number, and what the line says first (firstAnnouncement, a summary in English; heard: menu, private (asks for account or ID data before anything else), queue, closed or message; options: keypad options heard; asksFirstFor: data the line asks for first; route, for the most-asked hotlines only: the keys pressed or words said from the start, where it ended (queue: the hold queue for an agent; person; private: no way to a person without account or ID data; closed), confirmedOn: the days two or more tests in a row found the same route (only confirmed routes are published), needsAccountData, wayOut: words the line offers instead of account data that worked, secondsToPerson; triedWithoutSuccess: when no person was reached, the data-free ways out that were tested and did not help, such as \"representative\", \"key 0\" or \"silence\"). null until a test call reached the line. Each number is tested about once a month.",
     "menuRoute": "null until PayCall tested the route with a real call; menus change, so use testedOn.",
     "waitOnHold": "time on hold (Hold for me on) over all the hotline's numbers; null until a call of at least one minute was measured; range plus median, not a promise.",
     "callLength": "typical whole call (waiting and talking) on PayCall calls, same rules as waitOnHold."
@@ -47,8 +47,23 @@
       },
       "updatedAt": "2026-11-20",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-24",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-24T14:44:50.040Z",
+        "number": "+18008291040",
+        "firstAnnouncement": "The IRS line thanks callers for calling the Internal Revenue Service and a voice assistant asks them to say in a few words why they are calling.",
+        "heard": "menu",
+        "options": [],
+        "asksFirstFor": [],
+        "voiceAssistant": true,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -77,8 +92,23 @@
       },
       "updatedAt": "2026-11-20",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-24",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-24T16:27:38.754Z",
+        "number": "+18007721213",
+        "firstAnnouncement": "The line welcomes callers to the Social Security Administration, offers a text message about SSA's recent results if they say yes, and then asks how it can help.",
+        "heard": "menu",
+        "options": [],
+        "asksFirstFor": [],
+        "voiceAssistant": true,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -109,13 +139,13 @@
       "menuRoute": null,
       "reachableFromAbroad": {
         "status": "confirmed",
-        "lastConfirmedOn": "2026-11-24",
+        "lastConfirmedOn": "2026-11-25",
         "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
       },
       "lastTestCall": {
-        "testedAt": "2026-11-24T04:41:50.671Z",
+        "testedAt": "2026-11-25T05:49:54.005Z",
         "number": "+18009359935",
-        "firstAnnouncement": "The line notes that calls are recorded and voice may be used for verification, welcomes callers to Chase, and asks them to enter their 9-digit Social Security number.",
+        "firstAnnouncement": "The line welcomes callers to Chase and first asks them to enter their 9 digit Social Security number for verification.",
         "heard": "private",
         "options": [],
         "asksFirstFor": [
@@ -123,7 +153,34 @@
         ],
         "voiceAssistant": false,
         "language": "en",
-        "route": null,
+        "route": {
+          "result": "private",
+          "confirmedOn": [
+            "2026-11-25"
+          ],
+          "needsAccountData": true,
+          "wayOut": [],
+          "secondsToPerson": null,
+          "triedWithoutSuccess": [
+            "representative",
+            "key 0",
+            "silence"
+          ],
+          "steps": [
+            {
+              "action": "say",
+              "phrase": "representative"
+            },
+            {
+              "action": "press",
+              "key": "0"
+            },
+            {
+              "action": "wait"
+            }
+          ],
+          "description": "The line asks for a 9 digit Social Security number first, or a card or account number via 1. Saying \"representative\", pressing 0 and staying silent did not lead to a person."
+        },
         "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
       },
       "otherNumbers": [],
@@ -172,7 +229,7 @@
       "lastTestCall": {
         "testedAt": "2026-11-24T04:43:28.520Z",
         "number": "+18004321000",
-        "firstAnnouncement": "The Bank of America line greets callers and immediately asks them to say or enter their telephone access ID, card number or account number.",
+        "firstAnnouncement": "The Bank of America line greets callers and immediately asks them to say or enter their telephone access ID, card number, or account number.",
         "heard": "private",
         "options": [],
         "asksFirstFor": [
@@ -219,9 +276,9 @@
         "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
       },
       "lastTestCall": {
-        "testedAt": "2026-11-24T04:44:34.960Z",
+        "testedAt": "2026-11-24T14:30:41.540Z",
         "number": "+18008693557",
-        "firstAnnouncement": "The line thanks callers for calling Wells Fargo and immediately asks for the full account or card number.",
+        "firstAnnouncement": "The Wells Fargo line greets callers and immediately asks for their full account or card number.",
         "heard": "private",
         "options": [],
         "asksFirstFor": [
@@ -230,7 +287,50 @@
         ],
         "voiceAssistant": true,
         "language": "en",
-        "route": null,
+        "route": {
+          "result": "queue",
+          "confirmedOn": [
+            "2026-11-24"
+          ],
+          "needsAccountData": false,
+          "wayOut": [
+            "I don't have it",
+            "speak to an agent"
+          ],
+          "secondsToPerson": 153,
+          "triedWithoutSuccess": [],
+          "steps": [
+            {
+              "action": "say",
+              "phrase": "representative"
+            },
+            {
+              "action": "say",
+              "phrase": "I don't have it"
+            },
+            {
+              "action": "say",
+              "phrase": "representative"
+            },
+            {
+              "action": "say",
+              "phrase": "general question"
+            },
+            {
+              "action": "say",
+              "phrase": "speak to an agent"
+            },
+            {
+              "action": "say",
+              "phrase": "checking"
+            },
+            {
+              "action": "say",
+              "phrase": "personal"
+            }
+          ],
+          "description": "Say \"representative\", then \"I don't have it\", \"representative\", \"general question\", \"speak to an agent\", \"checking\" and \"personal\"; you are then in the hold queue for an agent (about 153 seconds)."
+        },
         "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
       },
       "otherNumbers": [],
@@ -261,8 +361,23 @@
       },
       "updatedAt": "2026-11-23",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-25T06:12:44.996Z",
+        "number": "+18003749700",
+        "firstAnnouncement": "The line welcomes callers to Citibank and a voice assistant asks how it can help.",
+        "heard": "menu",
+        "options": [],
+        "asksFirstFor": [],
+        "voiceAssistant": true,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -291,8 +406,25 @@
       },
       "updatedAt": "2026-10-25",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-25T06:10:28.266Z",
+        "number": "+18887622265",
+        "firstAnnouncement": "The line welcomes callers to PNC Voice Banking and asks them to say or enter their user ID. Callers who don't know it can say \"I don't know it\".",
+        "heard": "private",
+        "options": [],
+        "asksFirstFor": [
+          "other"
+        ],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -411,7 +543,11 @@
       },
       "updatedAt": "2026-11-23",
       "menuRoute": null,
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-24",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
       "lastTestCall": null,
       "otherNumbers": [],
       "waitOnHold": null,
@@ -441,7 +577,11 @@
       },
       "updatedAt": "2026-11-23",
       "menuRoute": null,
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-24",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
       "lastTestCall": null,
       "otherNumbers": [],
       "waitOnHold": null,
@@ -655,8 +795,28 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-24",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-24T17:07:38.155Z",
+        "number": "+12106770065",
+        "firstAnnouncement": "The line welcomes callers to Citibank and a voice assistant asks what they need help with, e.g. \"I need my balance\". Callers who need touch-tone assistance can press star star.",
+        "heard": "menu",
+        "options": [
+          {
+            "key": "**",
+            "label": "Touch-tone assistance"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": true,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -685,8 +845,25 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-25T06:13:47.843Z",
+        "number": "+18002274825",
+        "firstAnnouncement": "The Capital One line greets callers and first asks them to say or enter their 16-digit card number. Callers without a card, or whose card is lost or stolen, can say so instead.",
+        "heard": "private",
+        "options": [],
+        "asksFirstFor": [
+          "cardNumber"
+        ],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -807,8 +984,26 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-24",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-24T17:37:37.515Z",
+        "number": "+13363931111",
+        "firstAnnouncement": "The American Express line says it accepts collect calls, then asks for the 15-digit card number or full Social Security number. Callers without an account can say \"no account\".",
+        "heard": "private",
+        "options": [],
+        "asksFirstFor": [
+          "cardNumber",
+          "ssn"
+        ],
+        "voiceAssistant": true,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -867,7 +1062,11 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-24",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
       "lastTestCall": null,
       "otherNumbers": [],
       "waitOnHold": null,
@@ -897,8 +1096,23 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-24",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-24T18:07:36.089Z",
+        "number": "+14128037711",
+        "firstAnnouncement": "The PNC Bank line says it accepts collect calls and asks callers to hold while the call is transferred. A notice mentions direct deposits may arrive up to 2 days early with PNC early pay.",
+        "heard": "queue",
+        "options": [],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -927,7 +1141,11 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-24",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
       "lastTestCall": null,
       "otherNumbers": [],
       "waitOnHold": null,
@@ -957,8 +1175,23 @@
       },
       "updatedAt": "2026-11-23",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-24",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-24T19:57:36.327Z",
+        "number": "+18003472683",
+        "firstAnnouncement": "The line thanks callers for calling Discover, notes that the voice may be used for verification, and a voice assistant asks how it can help.",
+        "heard": "menu",
+        "options": [],
+        "asksFirstFor": [],
+        "voiceAssistant": true,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -987,7 +1220,11 @@
       },
       "updatedAt": "2026-11-23",
       "menuRoute": null,
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-24",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
       "lastTestCall": null,
       "otherNumbers": [],
       "waitOnHold": null,
@@ -1079,8 +1316,28 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-24",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-24T18:17:36.322Z",
+        "number": "+14156678400",
+        "firstAnnouncement": "The line greets callers as Charles Schwab International Client Services and notes that the Mandarin and Cantonese lines have higher than normal call volumes. Press 1 for English services.",
+        "heard": "menu",
+        "options": [
+          {
+            "key": "1",
+            "label": "English services"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -1201,8 +1458,35 @@
       },
       "updatedAt": "2026-11-23",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-24",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-24T16:57:36.649Z",
+        "number": "+12105318722",
+        "firstAnnouncement": "The line greets callers at USAA and asks for a Social Security or USAA member number. Callers can press # to reach an extension, or press 1 if they are not a member.",
+        "heard": "private",
+        "options": [
+          {
+            "key": "#",
+            "label": "Reach an extension"
+          },
+          {
+            "key": "1",
+            "label": "Not a member"
+          }
+        ],
+        "asksFirstFor": [
+          "ssn",
+          "customerNumber"
+        ],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -1263,8 +1547,25 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-24",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-24T17:47:36.818Z",
+        "number": "+14029352050",
+        "firstAnnouncement": "The line thanks callers for calling PayPal and asks them to say or enter the phone number on their PayPal account.",
+        "heard": "private",
+        "options": [],
+        "asksFirstFor": [
+          "other"
+        ],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -1293,8 +1594,23 @@
       },
       "updatedAt": "2026-11-23",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-24",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-24T17:17:40.346Z",
+        "number": "+12123570026",
+        "firstAnnouncement": "The line greets callers to Marcus by Goldman Sachs, notes its 2023 GoBankingRates best savings account award, and points to the FAQs at marcus.com or logged-in chat. Callers who stay on the line are directed by an automated system.",
+        "heard": "message",
+        "options": [],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [
         {
           "e164": "+18557307283",
@@ -1547,7 +1863,7 @@
       "lastTestCall": {
         "testedAt": "2026-11-24T11:10:05.771Z",
         "number": "+441619319070",
-        "firstAnnouncement": "The HMRC self assessment line states a recent average wait of 20 minutes and suggests using the digital assistant at gov.uk (search 'contact HMRC') or the HMRC app instead. It notes that self assessment repayments should be claimed online.",
+        "firstAnnouncement": "The HMRC self assessment line greets callers with a recent average wait of 20 minutes and suggests using the digital assistant at gov.uk or the HMRC app instead. It notes that self assessment repayments should be claimed online.",
         "heard": "message",
         "options": [],
         "asksFirstFor": [],
@@ -1623,18 +1939,7 @@
         "lastConfirmedOn": "2026-11-23",
         "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
       },
-      "lastTestCall": {
-        "testedAt": "2026-11-23T22:40:12.287Z",
-        "number": "+61262163444",
-        "firstAnnouncement": "The line greets callers to the Australian Taxation Office (ATO) and explains that it uses voice biometrics to create a voice print for verifying callers' identity.",
-        "heard": "message",
-        "options": [],
-        "asksFirstFor": [],
-        "voiceAssistant": false,
-        "language": "en",
-        "route": null,
-        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
-      },
+      "lastTestCall": null,
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -1713,23 +2018,7 @@
         "lastConfirmedOn": "2026-11-23",
         "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
       },
-      "lastTestCall": {
-        "testedAt": "2026-11-23T22:50:10.105Z",
-        "number": "+61362223455",
-        "firstAnnouncement": "The line welcomes callers to Services Australia Centrelink International and notes that direct calls from outside Australia are charged. Callers who received a proof of life certificate press 1.",
-        "heard": "menu",
-        "options": [
-          {
-            "key": "1",
-            "label": "Received a proof of life certificate"
-          }
-        ],
-        "asksFirstFor": [],
-        "voiceAssistant": false,
-        "language": "en",
-        "route": null,
-        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
-      },
+      "lastTestCall": null,
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -1763,7 +2052,18 @@
         "lastConfirmedOn": "2026-11-24",
         "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
       },
-      "lastTestCall": null,
+      "lastTestCall": {
+        "testedAt": "2026-11-24T11:20:06.749Z",
+        "number": "+441912187777",
+        "firstAnnouncement": "The International Pension Centre line, part of the Department for Work and Pensions, opens with a notice that UK State Pension payments into Spanish bank accounts may be delayed by up to 2 days for the next 2 payments. Callers only need to contact the centre if the delay is longer.",
+        "heard": "message",
+        "options": [],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -1800,12 +2100,12 @@
       "lastTestCall": {
         "testedAt": "2026-11-24T11:29:37.454Z",
         "number": "+443007906801",
-        "firstAnnouncement": "The line welcomes callers to DVLA and explains it is for non-medical driving licence enquiries. Press 1 for non-medical driving licence enquiries, or 2 for medical conditions or renewing a medical licence.",
+        "firstAnnouncement": "The line welcomes callers to DVLA and explains it handles non-medical driving licence enquiries. Press 1 for a non-medical driving licence enquiry or 2 for a medical condition or medical licence renewal.",
         "heard": "menu",
         "options": [
           {
             "key": "1",
-            "label": "Non-medical driving licence enquiries"
+            "label": "Non-medical driving licence enquiry"
           },
           {
             "key": "2",
@@ -1846,7 +2146,11 @@
       },
       "updatedAt": "2026-11-23",
       "menuRoute": null,
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-24",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
       "lastTestCall": null,
       "otherNumbers": [],
       "waitOnHold": null,
@@ -1876,8 +2180,23 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-25T10:27:48.558Z",
+        "number": "+4938558847000",
+        "firstAnnouncement": "The line welcomes callers to the Finanzamt Neubrandenburg and says they are calling outside telephone hours. Hours are Monday, Tuesday and Thursday 9 to 12 and 13 to 15, and Friday 9 to 12.",
+        "heard": "closed",
+        "options": [],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "de",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -2154,7 +2473,7 @@
       "lastTestCall": {
         "testedAt": "2026-11-23T20:00:09.440Z",
         "number": "+18002211212",
-        "firstAnnouncement": "The line greets callers with Delta Air Lines' AI-powered voice assistant, which refers to delta.com/ai terms for its terms of use. It asks callers to describe in detail why they are calling.",
+        "firstAnnouncement": "The line greets callers with Delta Air Lines' AI-powered voice assistant, which asks them to describe in detail why they are calling.",
         "heard": "menu",
         "options": [],
         "asksFirstFor": [],
@@ -2792,8 +3111,23 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-25T06:11:35.553Z",
+        "number": "+18886714405",
+        "firstAnnouncement": "The line thanks callers for calling Progressive and a voice assistant asks them to say in complete sentences how it can help.",
+        "heard": "menu",
+        "options": [],
+        "asksFirstFor": [],
+        "voiceAssistant": true,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -2822,7 +3156,11 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
       "lastTestCall": null,
       "otherNumbers": [],
       "waitOnHold": null,
@@ -4150,7 +4488,7 @@
       "lastTestCall": {
         "testedAt": "2026-11-23T20:10:11.439Z",
         "number": "+18002752273",
-        "firstAnnouncement": "The line welcomes callers to Apple Support and notes that terms of use apply and calls are recorded. An automated assistant then asks which Apple product the caller needs help with.",
+        "firstAnnouncement": "The line welcomes callers to Apple Support and notes that terms of use apply. An automated assistant then asks which Apple product the caller needs help with.",
         "heard": "menu",
         "options": [],
         "asksFirstFor": [],
@@ -4475,7 +4813,7 @@
       "lastTestCall": {
         "testedAt": "2026-11-24T11:46:45.247Z",
         "number": "+18888426328",
-        "firstAnnouncement": "The line greets callers to Navy Federal Credit Union and asks them to say or enter their access number or full Social Security number. Callers can also say \"not a member\".",
+        "firstAnnouncement": "The Navy Federal Credit Union line first asks callers to say or enter their access number or full Social Security number. Callers can also say \"not a member\".",
         "heard": "private",
         "options": [],
         "asksFirstFor": [
@@ -4487,16 +4825,15 @@
         "route": {
           "result": "queue",
           "confirmedOn": [
-            "2026-11-24",
             "2026-11-24"
           ],
           "needsAccountData": false,
           "wayOut": [
             "not a member",
-            "something else",
             "something else"
           ],
           "secondsToPerson": 61,
+          "triedWithoutSuccess": [],
           "steps": [
             {
               "action": "say",
@@ -4511,7 +4848,7 @@
               "phrase": "something else"
             }
           ],
-          "description": "Say \"not a member\", then \"something else\", then \"something else\" again; you are then in the hold queue for a member service representative (about 61 seconds)."
+          "description": "Say \"not a member\", then \"something else\", then \"something else\" again; you are then in the hold queue for a representative (about 61 seconds)."
         },
         "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
       },
@@ -4583,7 +4920,11 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-24",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
       "lastTestCall": null,
       "otherNumbers": [],
       "waitOnHold": null,
@@ -4613,7 +4954,11 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-24",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
       "lastTestCall": null,
       "otherNumbers": [],
       "waitOnHold": null,
@@ -4643,8 +4988,32 @@
       },
       "updatedAt": "2026-11-23",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-24",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-24T19:17:38.587Z",
+        "number": "+15412256700",
+        "firstAnnouncement": "The line welcomes callers to PenFed Credit Union. Press 1 for balances, transaction history, payments and transfers, or 2 for the mortgage or equity departments.",
+        "heard": "menu",
+        "options": [
+          {
+            "key": "1",
+            "label": "Balances, transactions, payments and transfers"
+          },
+          {
+            "key": "2",
+            "label": "Mortgage or equity departments"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -4681,7 +5050,7 @@
       "lastTestCall": {
         "testedAt": "2026-11-23T19:40:11.007Z",
         "number": "+18009168800",
-        "firstAnnouncement": "The line greets callers with \"Thank you for calling TransUnion\" and asks them to press or say 1 for English.",
+        "firstAnnouncement": "The TransUnion line greets callers with a language prompt: press or say 1 for English.",
         "heard": "menu",
         "options": [
           {
@@ -6168,7 +6537,11 @@
       },
       "updatedAt": "2026-11-23",
       "menuRoute": null,
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-24",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
       "lastTestCall": null,
       "otherNumbers": [],
       "waitOnHold": null,
@@ -6228,7 +6601,11 @@
       },
       "updatedAt": "2026-11-23",
       "menuRoute": null,
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-24",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
       "lastTestCall": null,
       "otherNumbers": [],
       "waitOnHold": null,
@@ -6362,7 +6739,11 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-24",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
       "lastTestCall": null,
       "otherNumbers": [],
       "waitOnHold": null,
@@ -6422,8 +6803,32 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-24",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-24T19:07:37.569Z",
+        "number": "+15148619898",
+        "firstAnnouncement": "The line welcomes callers to CIBC and promotes speaking with a representative. Press 1 to report a lost, stolen or damaged card, or 2 for all other inquiries.",
+        "heard": "menu",
+        "options": [
+          {
+            "key": "1",
+            "label": "Report card lost, stolen or damaged"
+          },
+          {
+            "key": "2",
+            "label": "All other inquiries"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -6452,7 +6857,11 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-24",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
       "lastTestCall": null,
       "otherNumbers": [],
       "waitOnHold": null,
@@ -6482,7 +6891,11 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-24",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
       "lastTestCall": null,
       "otherNumbers": [],
       "waitOnHold": null,
@@ -6542,8 +6955,36 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-24",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-24T18:27:38.522Z",
+        "number": "+14165513449",
+        "firstAnnouncement": "The EQ Bank line opens with a keypad menu: press 1 for the EQ Bank card, 2 for registered products such as a tax-free savings account, 3 for personal banking. A business banking option follows.",
+        "heard": "menu",
+        "options": [
+          {
+            "key": "1",
+            "label": "EQ Bank card"
+          },
+          {
+            "key": "2",
+            "label": "Registered products (e.g. TFSA)"
+          },
+          {
+            "key": "3",
+            "label": "Personal banking"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -9286,7 +9727,11 @@
       },
       "updatedAt": "2026-11-23",
       "menuRoute": null,
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
       "lastTestCall": null,
       "otherNumbers": [],
       "waitOnHold": null,
@@ -9376,8 +9821,23 @@
       },
       "updatedAt": "2026-11-23",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-25T10:57:48.375Z",
+        "number": "+441132421984",
+        "firstAnnouncement": "The line says it helps manage Halifax, Lloyds and Bank of Scotland accounts, welcomes callers to Lloyds Bank and asks them to say the reason for their call in their own words.",
+        "heard": "menu",
+        "options": [],
+        "asksFirstFor": [],
+        "voiceAssistant": true,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -9436,7 +9896,11 @@
       },
       "updatedAt": "2026-11-23",
       "menuRoute": null,
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
       "lastTestCall": null,
       "otherNumbers": [],
       "waitOnHold": null,
@@ -9496,8 +9960,32 @@
       },
       "updatedAt": "2026-11-23",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-25T11:27:48.955Z",
+        "number": "+441733347007",
+        "firstAnnouncement": "The line welcomes callers to Lloyds Bank and asks them to say the reason for their call in their own words. Press 1 to hear the balance or # for self-service options.",
+        "heard": "menu",
+        "options": [
+          {
+            "key": "1",
+            "label": "Hear your balance"
+          },
+          {
+            "key": "#",
+            "label": "Self-service options"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": true,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -9556,8 +10044,23 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-25T11:17:48.871Z",
+        "number": "+441702278272",
+        "firstAnnouncement": "The line greets callers to Lloyds Bank and points them to the mobile app for new cards, account servicing and in-app messaging. A voice assistant then asks callers to say the reason for their call in their own words.",
+        "heard": "menu",
+        "options": [],
+        "asksFirstFor": [],
+        "voiceAssistant": true,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -9616,7 +10119,11 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
       "lastTestCall": null,
       "otherNumbers": [],
       "waitOnHold": null,
@@ -9706,8 +10213,44 @@
       },
       "updatedAt": "2026-11-23",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-25T11:47:48.331Z",
+        "number": "+441793656789",
+        "firstAnnouncement": "The Nationwide Building Society line advises callers to have account details or the mobile app ready. It offers 1 for current accounts, internet banking and credit cards, 2 for savings including ISAs and bonds, 3 for personal loans, 4 for mortgages and 5 for existing insurance policies.",
+        "heard": "menu",
+        "options": [
+          {
+            "key": "1",
+            "label": "Current accounts, internet banking, credit cards"
+          },
+          {
+            "key": "2",
+            "label": "Existing savings, ISAs and bonds"
+          },
+          {
+            "key": "3",
+            "label": "Personal loans"
+          },
+          {
+            "key": "4",
+            "label": "Mortgages"
+          },
+          {
+            "key": "5",
+            "label": "Existing insurance policies"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -9766,8 +10309,23 @@
       },
       "updatedAt": "2026-11-23",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-25T12:37:53.654Z",
+        "number": "+442476438997",
+        "firstAnnouncement": "The Nationwide Building Society line first points callers to www.nationwide.co.uk, where they can raise a dispute or request an additional cardholder, and mentions Internet banking and the mobile app. Existing cardholders are told they can check their balance, make a payment and request a PIN reminder through automated services that follow.",
+        "heard": "message",
+        "options": [],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -9826,8 +10384,23 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-25T12:07:48.254Z",
+        "number": "+442033228352",
+        "firstAnnouncement": "The Revolut line greets callers with a fraud warning and explains it is fully automated, for things like blocking a card or general inquiries. To speak to a human, callers are directed to chat support in the app.",
+        "heard": "message",
+        "options": [],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -9856,7 +10429,11 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
       "lastTestCall": null,
       "otherNumbers": [],
       "waitOnHold": null,
@@ -9916,8 +10493,23 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-25T12:27:48.454Z",
+        "number": "+442079304450",
+        "firstAnnouncement": "The line thanks callers for calling Starling Bank and says they will be connected to a member of the team shortly. It suggests the live chat in the app's help section as an alternative to waiting.",
+        "heard": "queue",
+        "options": [],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -11686,8 +12278,36 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-25T00:32:39.564Z",
+        "number": "+61396839999",
+        "firstAnnouncement": "The line greets callers with \"ANZ\" and offers a keypad menu: press 1 for phone banking self-service, 2 for anything else, or 8 to repeat the options.",
+        "heard": "menu",
+        "options": [
+          {
+            "key": "1",
+            "label": "Phone banking self-service"
+          },
+          {
+            "key": "2",
+            "label": "Anything else"
+          },
+          {
+            "key": "8",
+            "label": "Repeat options"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -11724,7 +12344,7 @@
       "lastTestCall": {
         "testedAt": "2026-11-24T00:10:13.147Z",
         "number": "+61131314",
-        "firstAnnouncement": "The line welcomes callers to ANZ and offers a keypad menu. Press 1 for phone banking self-service, 2 for anything else, or 8 to repeat the options.",
+        "firstAnnouncement": "The line welcomes callers to ANZ and offers a keypad menu: press 1 for phone banking self-service or 2 for anything else. Press 8 repeats the options.",
         "heard": "menu",
         "options": [
           {
@@ -11774,8 +12394,36 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-25T00:22:39.025Z",
+        "number": "+61386996955",
+        "firstAnnouncement": "The line greets callers with \"Welcome to ANZ\" and offers a keypad menu. Press 1 for phone banking self-service, 2 for anything else, or 8 to repeat the options.",
+        "heard": "menu",
+        "options": [
+          {
+            "key": "1",
+            "label": "Phone banking self-service"
+          },
+          {
+            "key": "2",
+            "label": "Anything else"
+          },
+          {
+            "key": "8",
+            "label": "Repeat options"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -11812,7 +12460,7 @@
       "lastTestCall": {
         "testedAt": "2026-11-24T01:30:12.767Z",
         "number": "+611800033844",
-        "firstAnnouncement": "The ANZ lost and stolen card line offers a keypad menu. Callers press 1 for general account inquiries, 2 if responding to an SMS from ANZ, 3 to report a lost or stolen card, or 8 to repeat the options.",
+        "firstAnnouncement": "The ANZ lost and stolen card line offers a menu: press 1 for general account inquiries, 2 if responding to an SMS from ANZ, 3 to report a lost or stolen card, or 8 to repeat the options.",
         "heard": "menu",
         "options": [
           {
@@ -11825,7 +12473,7 @@
           },
           {
             "key": "3",
-            "label": "Report a lost or stolen card"
+            "label": "Report lost or stolen card"
           },
           {
             "key": "8",
@@ -11866,8 +12514,28 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-25T00:42:42.962Z",
+        "number": "+61894492840",
+        "firstAnnouncement": "The line welcomes callers to Bankwest and offers self-service phone banking on 1. It suggests messaging Bankwest via the chat icon in the Bankwest app as the fastest way to get help.",
+        "heard": "menu",
+        "options": [
+          {
+            "key": "1",
+            "label": "Self-service phone banking"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -11904,7 +12572,7 @@
       "lastTestCall": {
         "testedAt": "2026-11-24T00:20:15.225Z",
         "number": "+61131719",
-        "firstAnnouncement": "The line greets callers to Bankwest, notes calls are monitored and transcribed, and offers self-service phone banking on 1. It suggests messaging Bankwest via the chat in the Bankwest app for help.",
+        "firstAnnouncement": "The line welcomes callers to Bankwest and offers self-service phone banking on 1. It also suggests messaging Bankwest via the chat icon in the Bankwest app for help.",
         "heard": "menu",
         "options": [
           {
@@ -11984,7 +12652,7 @@
       "lastTestCall": {
         "testedAt": "2026-11-23T23:10:10.104Z",
         "number": "+611300236344",
-        "firstAnnouncement": "The line greets callers to Bendigo Bank with a keypad menu. Press 1 for automated phone banking, 2 for cards, 3 for loans, or 4 for anything else including e-banking.",
+        "firstAnnouncement": "The line welcomes callers to Bendigo Bank and offers a keypad menu. Press 1 for automated phone banking, 2 for cards, 3 for loans, or 4 for anything else including e-banking.",
         "heard": "menu",
         "options": [
           {
@@ -12038,7 +12706,11 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
       "lastTestCall": null,
       "otherNumbers": [],
       "waitOnHold": null,
@@ -12076,7 +12748,7 @@
       "lastTestCall": {
         "testedAt": "2026-11-24T01:40:12.039Z",
         "number": "+611800035383",
-        "firstAnnouncement": "The line welcomes callers to the Bendigo Bank card service and offers 5 options. Press 1 to activate a card, 2 to change or set a PIN, 3 for lost or stolen cards, 4 for an alert message, or 5 for other assistance.",
+        "firstAnnouncement": "The line welcomes callers to the Bendigo Bank card service and offers 5 options. Press 1 to activate a card, 2 to change or set a PIN, 3 for lost or stolen cards, 4 for an alert message, 5 for other assistance.",
         "heard": "menu",
         "options": [
           {
@@ -12134,8 +12806,23 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-24",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-24T22:32:40.064Z",
+        "number": "+61299993283",
+        "firstAnnouncement": "The line welcomes callers to CommBank and a voice assistant asks them to say in a short sentence how it can help, such as a credit card balance or home loan rates.",
+        "heard": "menu",
+        "options": [],
+        "asksFirstFor": [],
+        "voiceAssistant": true,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -12217,7 +12904,7 @@
       "lastTestCall": {
         "testedAt": "2026-11-24T01:50:11.499Z",
         "number": "+61272421974",
-        "firstAnnouncement": "The line welcomes callers to ING and promotes the new ING mobile app. Callers press 1 for the new mobile app, 2 for an existing account, 3 to open a new account, with a further option for scam victims.",
+        "firstAnnouncement": "The line welcomes callers to ING and promotes the new ING mobile app. Press 1 for queries about the new mobile app, 2 for an existing account, 3 to open a new account; a further option for scam victims follows.",
         "heard": "menu",
         "options": [
           {
@@ -12275,12 +12962,12 @@
       "lastTestCall": {
         "testedAt": "2026-11-24T01:20:12.727Z",
         "number": "+61133464",
-        "firstAnnouncement": "The line welcomes callers to ING and promotes the new ING mobile app. Callers press 1 for queries about the new mobile app, 2 for an existing account, or 3 to open a new account.",
+        "firstAnnouncement": "The line welcomes callers to ING and promotes the new ING mobile app. Press 1 for app queries, 2 for an existing account, or 3 to open a new account.",
         "heard": "menu",
         "options": [
           {
             "key": "1",
-            "label": "New ING mobile app queries"
+            "label": "ING mobile app queries"
           },
           {
             "key": "2",
@@ -12355,7 +13042,11 @@
       },
       "updatedAt": "2026-11-24",
       "menuRoute": null,
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
       "lastTestCall": null,
       "otherNumbers": [],
       "waitOnHold": null,
@@ -12385,8 +13076,40 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-24",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-24T22:52:38.445Z",
+        "number": "+61386419083",
+        "firstAnnouncement": "The National Australia Bank (NAB) line first suggests calling through the NAB app, then offers a menu. Press 1 for phone banking, 2 for banking products or services, 3 for fraud, scams, blocked cards or blocked internet banking, and 9 to repeat.",
+        "heard": "menu",
+        "options": [
+          {
+            "key": "1",
+            "label": "Phone banking"
+          },
+          {
+            "key": "2",
+            "label": "Banking products or services"
+          },
+          {
+            "key": "3",
+            "label": "Fraud, scams, blocked cards or internet banking"
+          },
+          {
+            "key": "9",
+            "label": "Repeat options"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -12423,7 +13146,7 @@
       "lastTestCall": {
         "testedAt": "2026-11-24T00:50:10.922Z",
         "number": "+61132265",
-        "firstAnnouncement": "The line thanks callers for calling NAB and suggests calling through the NAB app instead. It offers 1 for phone banking, 2 for banking products or services, 3 for fraud, scams, blocked cards or blocked internet banking, and 9 to repeat.",
+        "firstAnnouncement": "The line thanks callers for calling NAB and suggests calling through the NAB app instead. It offers 1 for phone banking, 2 for banking products or services, 3 for fraud, scams, blocked cards or blocked Internet banking, and 9 to repeat the options.",
         "heard": "menu",
         "options": [
           {
@@ -12436,7 +13159,7 @@
           },
           {
             "key": "3",
-            "label": "Fraud, scams, blocked cards or internet banking"
+            "label": "Fraud, scams, blocked cards or Internet banking"
           },
           {
             "key": "9",
@@ -12485,7 +13208,7 @@
       "lastTestCall": {
         "testedAt": "2026-11-24T02:10:10.559Z",
         "number": "+61290700202",
-        "firstAnnouncement": "The line thanks callers for calling Ubank and offers a keypad menu. Press 1 for payment limits, 2 for bonus interest, 3 if affected by a scam, 4 for home loans, 5 for anything else.",
+        "firstAnnouncement": "The line thanks callers for calling Ubank and offers a menu: press 1 to increase payment limits, 2 for bonus interest, 3 if impacted by a scam, 4 for home loans, 5 for anything else.",
         "heard": "menu",
         "options": [
           {
@@ -12585,7 +13308,7 @@
       "lastTestCall": {
         "testedAt": "2026-11-23T23:00:11.147Z",
         "number": "+611300002258",
-        "firstAnnouncement": "The Up Bank line thanks callers, directs them to the Talk to Us tab in the app, and states local support is available 7 days a week from 6 a.m. to midnight Melbourne time. A menu follows: press 1 if locked out of your account, with further options for lost or stolen cards and suspected fraud.",
+        "firstAnnouncement": "The Up Bank line thanks callers and points them to the Talk to Us tab in the app, with local support available 7 days a week from 6 a.m. to midnight Melbourne time. Callers can press 1 if locked out of their account, and further options cover lost or stolen cards and suspected fraud.",
         "heard": "menu",
         "options": [
           {
@@ -12635,7 +13358,7 @@
       "lastTestCall": {
         "testedAt": "2026-11-24T02:20:10.999Z",
         "number": "+61291557700",
-        "firstAnnouncement": "The Westpac line for overseas customers offers a keypad menu. Press 1 for self-service banking with a customer number and 3 digit access code, or 2 for all other inquiries.",
+        "firstAnnouncement": "The Westpac line, aimed at customers overseas, offers a keypad menu. Press 1 for self-service banking with a customer number and 3 digit access code, or 2 for all other inquiries.",
         "heard": "menu",
         "options": [
           {
@@ -12765,8 +13488,32 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-25T03:02:38.042Z",
+        "number": "+61132244",
+        "firstAnnouncement": "The line welcomes callers to AAMI and announces a menu of 6 options. Press 1 for claims, or 2 for home, strata, car or similar insurance policies (excluding CTP in NSW and SA and MAI in the ACT).",
+        "heard": "menu",
+        "options": [
+          {
+            "key": "1",
+            "label": "Claims inquiries"
+          },
+          {
+            "key": "2",
+            "label": "Home, strata, car or similar insurance policies"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -12855,8 +13602,36 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-25T02:12:41.045Z",
+        "number": "+61131123",
+        "firstAnnouncement": "The NRMA Insurance claims line asks callers to have their claim number ready. Press 1 for a new claim, 2 for an existing claim, or 3 for anything not related to a claim.",
+        "heard": "menu",
+        "options": [
+          {
+            "key": "1",
+            "label": "Make a new claim"
+          },
+          {
+            "key": "2",
+            "label": "Existing claim"
+          },
+          {
+            "key": "3",
+            "label": "Not related to a claim"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -12885,8 +13660,52 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-25T03:32:42.525Z",
+        "number": "+61133723",
+        "firstAnnouncement": "The line greets callers with \"Calling QBE\" and offers a keypad menu: 1 payments, 2 quotes or new policies, 3 existing policies, 4 claims, 5 workers' compensation, 6 all other inquiries. Press 8 to repeat the options.",
+        "heard": "menu",
+        "options": [
+          {
+            "key": "1",
+            "label": "Make a payment"
+          },
+          {
+            "key": "2",
+            "label": "Quote or new policy"
+          },
+          {
+            "key": "3",
+            "label": "Existing policy"
+          },
+          {
+            "key": "4",
+            "label": "Claims"
+          },
+          {
+            "key": "5",
+            "label": "Workers' compensation"
+          },
+          {
+            "key": "6",
+            "label": "All other inquiries"
+          },
+          {
+            "key": "8",
+            "label": "Repeat options"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -12945,7 +13764,11 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
       "lastTestCall": null,
       "otherNumbers": [],
       "waitOnHold": null,
@@ -12975,8 +13798,40 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-25T02:22:37.922Z",
+        "number": "+61131155",
+        "firstAnnouncement": "The line welcomes callers to Suncorp Insurance and offers a keypad menu. Press 1 for Suncorp Bank, 2 for home, car and other personal insurance (excluding CTP and life), 3 for CTP insurance, or 4 for health, whole of life or life insurance including income protection and funeral cover.",
+        "heard": "menu",
+        "options": [
+          {
+            "key": "1",
+            "label": "Suncorp Bank"
+          },
+          {
+            "key": "2",
+            "label": "Home, car and other personal insurance"
+          },
+          {
+            "key": "3",
+            "label": "CTP insurance"
+          },
+          {
+            "key": "4",
+            "label": "Health, whole of life or life insurance"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -13035,8 +13890,32 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-25T02:02:42.262Z",
+        "number": "+61131117",
+        "firstAnnouncement": "The line greets callers as Youi Roadside Assistance and offers a keypad menu: press 9 for an emergency with a person or animal locked in a car, press 1 for policy queries, changes, cancellations, renewals or general roadside cover inquiries. A further option for immediate breakdown assistance follows.",
+        "heard": "menu",
+        "options": [
+          {
+            "key": "9",
+            "label": "Emergency: person or animal locked in car"
+          },
+          {
+            "key": "1",
+            "label": "Policy queries, changes, cancellations, renewals, general in"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -13095,8 +13974,40 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-25T03:44:37.424Z",
+        "number": "+61134135",
+        "firstAnnouncement": "The line greets callers with \"Calling Bupa\" and offers a keypad menu. Press 1 for an existing policy, 2 to join Bupa or ask about travel, phone, cyber, pet, car or home insurance, 3 for healthcare providers, 4 for all other inquiries.",
+        "heard": "menu",
+        "options": [
+          {
+            "key": "1",
+            "label": "Existing policy"
+          },
+          {
+            "key": "2",
+            "label": "Join Bupa / travel, phone, cyber, pet, car, home insurance"
+          },
+          {
+            "key": "3",
+            "label": "Healthcare providers"
+          },
+          {
+            "key": "4",
+            "label": "All other inquiries"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -13185,8 +14096,44 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-25T02:32:38.185Z",
+        "number": "+61131334",
+        "firstAnnouncement": "The HCF line greets callers with a menu: press 1 for existing members, 2 to join HCF, 3 for travel, life, pet or other insurance, 4 for providers. Press 9 to repeat the options.",
+        "heard": "menu",
+        "options": [
+          {
+            "key": "1",
+            "label": "Existing HCF member"
+          },
+          {
+            "key": "2",
+            "label": "Join HCF"
+          },
+          {
+            "key": "3",
+            "label": "Travel, life, pet or other insurance"
+          },
+          {
+            "key": "4",
+            "label": "HCF provider"
+          },
+          {
+            "key": "9",
+            "label": "Repeat options"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -13245,7 +14192,11 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
       "lastTestCall": null,
       "otherNumbers": [],
       "waitOnHold": null,
@@ -13275,8 +14226,40 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-25T03:12:38.602Z",
+        "number": "+61132331",
+        "firstAnnouncement": "The line welcomes callers to Medibank and offers a keypad menu: 1 for existing private health insurance policies, 2 to join Medibank, 3 for overseas student or visitor cover, 4 for travel, pet, income protection or life insurance.",
+        "heard": "menu",
+        "options": [
+          {
+            "key": "1",
+            "label": "Existing private health insurance policy"
+          },
+          {
+            "key": "2",
+            "label": "Join Medibank"
+          },
+          {
+            "key": "3",
+            "label": "Overseas student or visitor cover"
+          },
+          {
+            "key": "4",
+            "label": "Travel, pet, income protection or life insurance"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -13365,8 +14348,23 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-25T02:52:40.763Z",
+        "number": "+61131642",
+        "firstAnnouncement": "The line greets callers to nib Health Insurance and asks whether they are currently a nib member.",
+        "heard": "menu",
+        "options": [],
+        "asksFirstFor": [],
+        "voiceAssistant": true,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -13455,8 +14453,36 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-25T04:14:34.525Z",
+        "number": "+611800333613",
+        "firstAnnouncement": "The line greets callers with an AIA Australia welcome message, then offers a menu: press 1 for life insurance or income protection, 2 for an existing Vitality membership, 3 for private health insurance.",
+        "heard": "menu",
+        "options": [
+          {
+            "key": "1",
+            "label": "Life insurance or income protection"
+          },
+          {
+            "key": "2",
+            "label": "Existing Vitality membership"
+          },
+          {
+            "key": "3",
+            "label": "Private health insurance"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -13485,8 +14511,36 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-25T01:52:37.865Z",
+        "number": "+61131056",
+        "firstAnnouncement": "The line thanks callers for calling AIA Australia. Press 1 for a new or existing claim, 2 for advisers, or 3 for policyholders.",
+        "heard": "menu",
+        "options": [
+          {
+            "key": "1",
+            "label": "New or existing claim"
+          },
+          {
+            "key": "2",
+            "label": "Advisers"
+          },
+          {
+            "key": "3",
+            "label": "Policyholders"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -13545,8 +14599,40 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-25T01:22:38.225Z",
+        "number": "+611300880750",
+        "firstAnnouncement": "The line welcomes callers to Insuranceline and offers a keypad menu. Press 1 to pay with a policy number via self-service, 2 for new or additional policies, 3 to lodge or track a claim, 4 for financial hardship or cancellations.",
+        "heard": "menu",
+        "options": [
+          {
+            "key": "1",
+            "label": "Self-service payment"
+          },
+          {
+            "key": "2",
+            "label": "New or additional policy"
+          },
+          {
+            "key": "3",
+            "label": "Lodge or check a claim"
+          },
+          {
+            "key": "4",
+            "label": "Financial hardship or cancel policy"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -13605,8 +14691,32 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-25T00:52:38.022Z",
+        "number": "+611300209088",
+        "firstAnnouncement": "The line welcomes callers to TAL, the life insurance partner. Callers press 1 if they are a customer or 2 if they are an adviser.",
+        "heard": "menu",
+        "options": [
+          {
+            "key": "1",
+            "label": "Customer"
+          },
+          {
+            "key": "2",
+            "label": "Adviser"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -13665,8 +14775,32 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-25T01:02:38.105Z",
+        "number": "+611300553764",
+        "firstAnnouncement": "The TAL line serves life insurance customers and advisers with policies previously branded BT, Westpac or St.George. Customers press 1 and advisers press 2.",
+        "heard": "menu",
+        "options": [
+          {
+            "key": "1",
+            "label": "Customer"
+          },
+          {
+            "key": "2",
+            "label": "Adviser"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -13695,8 +14829,28 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-25T02:42:40.325Z",
+        "number": "+61131551",
+        "firstAnnouncement": "The line welcomes callers to Zurich with notices about respectful conduct and general advice. A menu follows: press 1 for life insurance products including income protection, with further options for claims inquiries.",
+        "heard": "menu",
+        "options": [
+          {
+            "key": "1",
+            "label": "Life insurance products incl. income protection"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -13755,8 +14909,23 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-25T01:32:40.742Z",
+        "number": "+611300884508",
+        "firstAnnouncement": "The 1Cover travel assistance centre line offers emergency assistance for policyholders only, not general or sales inquiries. Callers are then placed on hold for an operator.",
+        "heard": "queue",
+        "options": [],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -13815,8 +14984,40 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-25T04:04:34.844Z",
+        "number": "+611800010075",
+        "firstAnnouncement": "The line welcomes callers to the Allianz Global Assistance travel emergency department. Press 1 for 24-hour medical and emergency travel assistance, 2 for claims, 3 for policy inquiries including pre-existing medical conditions, or 9 for the privacy policy.",
+        "heard": "menu",
+        "options": [
+          {
+            "key": "1",
+            "label": "24-hour medical and emergency travel assistance"
+          },
+          {
+            "key": "2",
+            "label": "Claims inquiries"
+          },
+          {
+            "key": "3",
+            "label": "Policy inquiries incl. pre-existing conditions"
+          },
+          {
+            "key": "9",
+            "label": "Privacy policy"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -13845,8 +15046,40 @@
       },
       "updatedAt": "2026-11-22",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-25T01:12:40.182Z",
+        "number": "+611300725154",
+        "firstAnnouncement": "The line welcomes callers to Allianz Global Assistance and offers a keypad menu. Press 1 for policy inquiries, 2 for claims, 3 for 24-hour medical and emergency travel assistance, or 9 for the privacy policy.",
+        "heard": "menu",
+        "options": [
+          {
+            "key": "1",
+            "label": "Policy inquiries"
+          },
+          {
+            "key": "2",
+            "label": "Claims inquiries"
+          },
+          {
+            "key": "3",
+            "label": "24-hour medical and emergency travel assistance"
+          },
+          {
+            "key": "9",
+            "label": "Privacy policy"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -15766,7 +16999,11 @@
       },
       "updatedAt": "2026-11-23",
       "menuRoute": null,
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
       "lastTestCall": null,
       "otherNumbers": [],
       "waitOnHold": null,
@@ -15796,8 +17033,32 @@
       },
       "updatedAt": "2026-11-23",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-25T10:37:47.997Z",
+        "number": "+4991112031010",
+        "firstAnnouncement": "The line greets callers on behalf of the Bundesagentur für Arbeit. Employers with questions about placing workers press 1; all other concerns press 2.",
+        "heard": "menu",
+        "options": [
+          {
+            "key": "1",
+            "label": "Employers: questions about job placement"
+          },
+          {
+            "key": "2",
+            "label": "All other inquiries"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "de",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -15826,7 +17087,11 @@
       },
       "updatedAt": "2026-11-23",
       "menuRoute": null,
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
       "lastTestCall": null,
       "otherNumbers": [],
       "waitOnHold": null,
@@ -16380,8 +17645,23 @@
       },
       "updatedAt": "2026-11-23",
       "menuRoute": null,
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "status": "confirmed",
+        "lastConfirmedOn": "2026-11-25",
+        "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-25T10:17:48.957Z",
+        "number": "+49308650",
+        "firstAnnouncement": "The line greets callers at Deutsche Rentenversicherung Bund and asks them to have their pension insurance number ready. A voice assistant then asks callers to briefly say what their call is about.",
+        "heard": "menu",
+        "options": [],
+        "asksFirstFor": [],
+        "voiceAssistant": true,
+        "language": "de",
+        "route": null,
+        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
+      },
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
@@ -16415,18 +17695,7 @@
         "lastConfirmedOn": "2026-11-23",
         "basis": "a call through PayCall (a browser calling service used from abroad) connected to this hotline (main or other number) on that day; the caller's location is not stored"
       },
-      "lastTestCall": {
-        "testedAt": "2026-11-23T19:24:19.309Z",
-        "number": "+49302970",
-        "firstAnnouncement": "The Deutsche Bahn line uses a voice assistant that asks callers to describe their complaint in one sentence.",
-        "heard": "menu",
-        "options": [],
-        "asksFirstFor": [],
-        "voiceAssistant": true,
-        "language": "de",
-        "route": null,
-        "basis": "automatic test call by PayCall that listened to the line's first announcement without pressing anything; the text is a summary of the recognised speech, not a recording"
-      },
+      "lastTestCall": null,
       "otherNumbers": [],
       "waitOnHold": null,
       "callLength": null,
