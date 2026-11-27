@@ -1,6 +1,6 @@
 {
   "name": "PayCall hotline data",
-  "description": "Official customer-service and government hotline numbers (countries: Australia, Canada, Germany, France, United Kingdom, Ireland, Mexico, and United States), each with the organisation's own source and check date; whether PayCall calls from abroad connected, with the last date; what each line says first, recorded by PayCall's test robot; phone-menu routes to a person tested with real calls; and measured hold times. Published by PayCall, Inc. for AI assistants and developers.",
+  "description": "Official customer-service and government hotline numbers (countries: Australia, Canada, Germany, France, United Kingdom, Ireland, India, Japan, Mexico, and United States), each with the organisation's own source and check date; whether PayCall calls from abroad connected, with the last date; what each line says first, recorded by PayCall's test robot; phone-menu routes to a person tested with real calls; and measured hold times. Published by PayCall, Inc. for AI assistants and developers.",
   "version": 7,
   "schema": "https://pay-call.com/hotlines.schema.json",
   "publisher": {
@@ -19,7 +19,7 @@
   "lookup": {
     "byNumber": "https://pay-call.com/hotlines.json?number=+18008291040 (any format; main or other numbers of a hotline)",
     "byId": "https://pay-call.com/hotlines.json?id=irs",
-    "filters": "https://pay-call.com/hotlines.json?country=gb&kind=bank&status=tested (country: au, ca, de, fr, gb, ie, mx, us; kind: government, bank, finance, insurance, airline, hotel, car-rental, telecom, tech, shipping, other; status: tested, checked or listed; abroad=confirmed: only hotlines reached from abroad)",
+    "filters": "https://pay-call.com/hotlines.json?country=gb&kind=bank&status=tested (country: au, ca, de, fr, gb, ie, in, jp, mx, us; kind: government, bank, finance, insurance, airline, hotel, car-rental, telecom, tech, shipping, other; status: tested, checked or listed; abroad=confirmed: only hotlines reached from abroad)",
     "language": "https://pay-call.com/hotlines.json?lang=es (texts in en, de, fr, es, it, pt, nl, pl, ja, zh, ar; English where a translation is missing)"
   },
   "methods": {
@@ -32,7 +32,7 @@
   },
   "fields": {
     "status": "tested: a phone-menu route (to a person, or a tested dead end) is on record; checked: the test robot called the line and recorded what it says first; listed: taken from the organisation's own source only.",
-    "hours": "text: the organisation's own wording; schedule: { timeZone (IANA), days (mon…sun), opens, closes (local 24-hour time) } where known, else null.",
+    "hours": "text: the organisation's own wording; schedule: { timeZone (IANA), periods: [{ days (mon…sun), opens, closes (local 24-hour time, 24:00 = midnight) }] } where the text is unambiguous, else null (for example \"local time\" on a line that serves several time zones). Holidays stay in the text.",
     "lastTestCall": "testedAt (UTC), number, heard (menu, private, queue, closed or message), firstAnnouncement, options (keys heard), asksFirstFor (data asked for first), voiceAssistant, language. null until a test call reached the line.",
     "route": "result: queue (hold queue for an agent), person, private (no way to a person without account or ID data) or closed; steps: the keys pressed and words said from the start; wayOut: words the line offers instead of account data that worked; triedWithoutSuccess: data-free ways out that did not help; secondsToPerson; confirmedOn (newest first). null until tested.",
     "waitOnHold": "lowMinutes, highMinutes, medianMinutes, method (measured or estimate); null until measured.",
@@ -145,7 +145,24 @@
       "otherNumbers": [],
       "hours": {
         "text": "24 hours a day, 7 days a week",
-        "schedule": null
+        "schedule": {
+          "timeZone": "America/New_York",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "00:00",
+              "closes": "24:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -230,7 +247,36 @@
       "otherNumbers": [],
       "hours": {
         "text": "Monday to Friday, 8 a.m. to 9 p.m.; Saturday, 9 a.m. to 6 p.m.; Sunday, 8 a.m. to 5 p.m. Eastern Time",
-        "schedule": null
+        "schedule": {
+          "timeZone": "America/New_York",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "opens": "08:00",
+              "closes": "21:00"
+            },
+            {
+              "days": [
+                "sat"
+              ],
+              "opens": "09:00",
+              "closes": "18:00"
+            },
+            {
+              "days": [
+                "sun"
+              ],
+              "opens": "08:00",
+              "closes": "17:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -308,7 +354,24 @@
       "otherNumbers": [],
       "hours": {
         "text": "24 hours a day, 7 days a week",
-        "schedule": null
+        "schedule": {
+          "timeZone": "America/New_York",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "00:00",
+              "closes": "24:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -440,7 +503,33 @@
         "display": "1-888-762-2265"
       },
       "otherNumbers": [],
-      "hours": null,
+      "hours": {
+        "text": "Monday to Friday, 7 a.m. to 10 p.m.; Saturday and Sunday, 8 a.m. to 5 p.m. Eastern Time",
+        "schedule": {
+          "timeZone": "America/New_York",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "opens": "07:00",
+              "closes": "22:00"
+            },
+            {
+              "days": [
+                "sat",
+                "sun"
+              ],
+              "opens": "08:00",
+              "closes": "17:00"
+            }
+          ]
+        }
+      },
       "officialTip": null,
       "source": {
         "url": "https://www.pnc.com/en/customer-service.html",
@@ -466,7 +555,7 @@
       "waitOnHold": null,
       "callLength": null,
       "lastTestedOn": "2026-11-25",
-      "lastChangedOn": "2026-11-25",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/call/pnc-bank-from-abroad",
         "reachGuide": null
@@ -484,7 +573,27 @@
         "display": "1-800-531-8722"
       },
       "otherNumbers": [],
-      "hours": null,
+      "hours": {
+        "text": "24 hours a day, 7 days a week for banking and claims (insurance policy service: Monday to Friday, 7 a.m. to 6 p.m.; Saturday, 8 a.m. to 4:30 p.m. Central Time)",
+        "schedule": {
+          "timeZone": "America/Chicago",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "00:00",
+              "closes": "24:00"
+            }
+          ]
+        }
+      },
       "officialTip": null,
       "source": {
         "url": "https://www.usaa.com/support/",
@@ -542,7 +651,7 @@
       "waitOnHold": null,
       "callLength": null,
       "lastTestedOn": "2026-11-25",
-      "lastChangedOn": "2026-11-25",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/call/usaa-from-abroad",
         "reachGuide": null
@@ -562,7 +671,22 @@
       "otherNumbers": [],
       "hours": {
         "text": "Monday to Friday, 6 a.m. to 11 p.m. Eastern Time",
-        "schedule": null
+        "schedule": {
+          "timeZone": "America/New_York",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "opens": "06:00",
+              "closes": "23:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -570,13 +694,15 @@
         "checkedOn": "2026-11-14",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
       "lastTestCall": null,
       "route": null,
       "waitOnHold": null,
       "callLength": null,
       "lastTestedOn": null,
-      "lastChangedOn": "2026-11-23",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/call/irs-from-abroad",
         "reachGuide": null
@@ -627,7 +753,22 @@
       "otherNumbers": [],
       "hours": {
         "text": "Monday to Friday, 8 a.m. to 8 p.m. Eastern Time; closed on weekends and public holidays",
-        "schedule": null
+        "schedule": {
+          "timeZone": "America/New_York",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "opens": "08:00",
+              "closes": "20:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -663,7 +804,24 @@
       "otherNumbers": [],
       "hours": {
         "text": "24 hours a day, 7 days a week",
-        "schedule": null
+        "schedule": {
+          "timeZone": "America/New_York",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "00:00",
+              "closes": "24:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -817,7 +975,7 @@
       "kind": "bank",
       "department": "Online banking support: U.S. toll-free",
       "country": "US",
-      "status": "listed",
+      "status": "checked",
       "phone": {
         "e164": "+18009564442",
         "display": "1-800-956-4442"
@@ -825,7 +983,24 @@
       "otherNumbers": [],
       "hours": {
         "text": "24 hours a day, 7 days a week",
-        "schedule": null
+        "schedule": {
+          "timeZone": "America/New_York",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "00:00",
+              "closes": "24:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -833,13 +1008,27 @@
         "checkedOn": "2026-10-25",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-27T09:23:58.045Z",
+        "number": "+18009564442",
+        "heard": "private",
+        "firstAnnouncement": "The line thanks callers for calling Wells Fargo and first asks for the full account or card number.",
+        "options": [],
+        "asksFirstFor": [
+          "accountNumber",
+          "cardNumber"
+        ],
+        "voiceAssistant": false,
+        "language": "en"
+      },
       "route": null,
       "waitOnHold": null,
       "callLength": null,
-      "lastTestedOn": null,
-      "lastChangedOn": "2026-11-23",
+      "lastTestedOn": "2026-11-27",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/call/wells-fargo-from-abroad",
         "reachGuide": null
@@ -1282,7 +1471,24 @@
       "otherNumbers": [],
       "hours": {
         "text": "24 hours a day, 7 days a week",
-        "schedule": null
+        "schedule": {
+          "timeZone": "America/New_York",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "00:00",
+              "closes": "24:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -1327,7 +1533,24 @@
       "otherNumbers": [],
       "hours": {
         "text": "24 hours a day, 7 days a week (some specialist teams have shorter hours)",
-        "schedule": null
+        "schedule": {
+          "timeZone": "America/New_York",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "00:00",
+              "closes": "24:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -1534,7 +1757,22 @@
       "otherNumbers": [],
       "hours": {
         "text": "Monday to Friday, 8 a.m. to 8 p.m. Eastern Time",
-        "schedule": null
+        "schedule": {
+          "timeZone": "America/New_York",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "opens": "08:00",
+              "closes": "20:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -1745,7 +1983,30 @@
       "otherNumbers": [],
       "hours": {
         "text": "Monday to Friday, 8 a.m. to 10 p.m.; Saturday and Sunday, 8 a.m. to 5 p.m. Eastern Time",
-        "schedule": null
+        "schedule": {
+          "timeZone": "America/New_York",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "opens": "08:00",
+              "closes": "22:00"
+            },
+            {
+              "days": [
+                "sat",
+                "sun"
+              ],
+              "opens": "08:00",
+              "closes": "17:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -1779,7 +2040,30 @@
       "otherNumbers": [],
       "hours": {
         "text": "Monday to Friday, 8 a.m. to 10 p.m.; Saturday and Sunday, 8 a.m. to 5 p.m. Eastern Time",
-        "schedule": null
+        "schedule": {
+          "timeZone": "America/New_York",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "opens": "08:00",
+              "closes": "22:00"
+            },
+            {
+              "days": [
+                "sat",
+                "sun"
+              ],
+              "opens": "08:00",
+              "closes": "17:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -1844,7 +2128,30 @@
       "otherNumbers": [],
       "hours": {
         "text": "Monday to Thursday, 5 a.m. to 7 p.m.; Friday to Sunday, 5 a.m. to 5 p.m. Pacific Time",
-        "schedule": null
+        "schedule": {
+          "timeZone": "America/Los_Angeles",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu"
+              ],
+              "opens": "05:00",
+              "closes": "19:00"
+            },
+            {
+              "days": [
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "05:00",
+              "closes": "17:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -1878,7 +2185,29 @@
       "otherNumbers": [],
       "hours": {
         "text": "Monday to Friday, 8 a.m. to 8 p.m.; Saturday, 8 a.m. to 5 p.m. Eastern Time; Sunday automated service only",
-        "schedule": null
+        "schedule": {
+          "timeZone": "America/New_York",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "opens": "08:00",
+              "closes": "20:00"
+            },
+            {
+              "days": [
+                "sat"
+              ],
+              "opens": "08:00",
+              "closes": "17:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -1912,7 +2241,29 @@
       "otherNumbers": [],
       "hours": {
         "text": "Monday to Friday, 8 a.m. to 8 p.m.; Saturday, 8 a.m. to 5 p.m. Eastern Time; Sunday automated service only",
-        "schedule": null
+        "schedule": {
+          "timeZone": "America/New_York",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "opens": "08:00",
+              "closes": "20:00"
+            },
+            {
+              "days": [
+                "sat"
+              ],
+              "opens": "08:00",
+              "closes": "17:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -1977,7 +2328,22 @@
       "otherNumbers": [],
       "hours": {
         "text": "Monday to Friday, 8 a.m. to 6 p.m. UK time; closed on bank holidays",
-        "schedule": null
+        "schedule": {
+          "timeZone": "Europe/London",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "opens": "08:00",
+              "closes": "18:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -2022,7 +2388,22 @@
       "otherNumbers": [],
       "hours": {
         "text": "Monday to Friday, 8 a.m. to 5 p.m. Canberra time (AEDT)",
-        "schedule": null
+        "schedule": {
+          "timeZone": "Australia/Sydney",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "opens": "08:00",
+              "closes": "17:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -2139,7 +2520,22 @@
       "otherNumbers": [],
       "hours": {
         "text": "Monday to Friday, 8 a.m. to 5 p.m. Australian Eastern Time (AEST, AEDT during daylight saving)",
-        "schedule": null
+        "schedule": {
+          "timeZone": "Australia/Sydney",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "opens": "08:00",
+              "closes": "17:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -2175,7 +2571,22 @@
       "otherNumbers": [],
       "hours": {
         "text": "Monday to Friday, 8 a.m. to 6 p.m. UK time",
-        "schedule": null
+        "schedule": {
+          "timeZone": "Europe/London",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "opens": "08:00",
+              "closes": "18:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -2220,7 +2631,29 @@
       "otherNumbers": [],
       "hours": {
         "text": "Monday to Friday, 8 a.m. to 7 p.m.; Saturday, 8 a.m. to 2 p.m. UK time",
-        "schedule": null
+        "schedule": {
+          "timeZone": "Europe/London",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "opens": "08:00",
+              "closes": "19:00"
+            },
+            {
+              "days": [
+                "sat"
+              ],
+              "opens": "08:00",
+              "closes": "14:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -2274,7 +2707,22 @@
       "otherNumbers": [],
       "hours": {
         "text": "Monday to Friday, 8 a.m. to 8 p.m. Eastern Time",
-        "schedule": null
+        "schedule": {
+          "timeZone": "America/New_York",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "opens": "08:00",
+              "closes": "20:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -2538,7 +2986,24 @@
       "otherNumbers": [],
       "hours": {
         "text": "24 hours a day, 7 days a week",
-        "schedule": null
+        "schedule": {
+          "timeZone": "America/New_York",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "00:00",
+              "closes": "24:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -2603,7 +3068,24 @@
       "otherNumbers": [],
       "hours": {
         "text": "24 hours a day, 7 days a week",
-        "schedule": null
+        "schedule": {
+          "timeZone": "America/New_York",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "00:00",
+              "closes": "24:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -3266,7 +3748,27 @@
         "display": "1-888-671-4405"
       },
       "otherNumbers": [],
-      "hours": null,
+      "hours": {
+        "text": "24 hours a day, 7 days a week",
+        "schedule": {
+          "timeZone": "America/New_York",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "00:00",
+              "closes": "24:00"
+            }
+          ]
+        }
+      },
       "officialTip": null,
       "source": {
         "url": "https://www.progressive.com/contact-us/",
@@ -3290,7 +3792,7 @@
       "waitOnHold": null,
       "callLength": null,
       "lastTestedOn": "2026-11-25",
-      "lastChangedOn": "2026-11-25",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/call/progressive-from-abroad",
         "reachGuide": null
@@ -4976,7 +5478,29 @@
       "otherNumbers": [],
       "hours": {
         "text": "Monday to Friday, 7 a.m. to 11 p.m.; Saturday, 8 a.m. to 8 p.m. Eastern Time",
-        "schedule": null
+        "schedule": {
+          "timeZone": "America/New_York",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "opens": "07:00",
+              "closes": "23:00"
+            },
+            {
+              "days": [
+                "sat"
+              ],
+              "opens": "08:00",
+              "closes": "20:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -5190,7 +5714,29 @@
       "otherNumbers": [],
       "hours": {
         "text": "Monday to Friday, 8 a.m. to 8 p.m.; Saturday, 8 a.m. to 6 p.m. Eastern Time; closed on Sunday",
-        "schedule": null
+        "schedule": {
+          "timeZone": "America/New_York",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "opens": "08:00",
+              "closes": "20:00"
+            },
+            {
+              "days": [
+                "sat"
+              ],
+              "opens": "08:00",
+              "closes": "18:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -5244,7 +5790,30 @@
       "otherNumbers": [],
       "hours": {
         "text": "Monday to Friday, 8 a.m. to 10 p.m.; Saturday and Sunday, 8 a.m. to 5 p.m. Eastern Time",
-        "schedule": null
+        "schedule": {
+          "timeZone": "America/New_York",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "opens": "08:00",
+              "closes": "22:00"
+            },
+            {
+              "days": [
+                "sat",
+                "sun"
+              ],
+              "opens": "08:00",
+              "closes": "17:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -6921,7 +7490,24 @@
       "otherNumbers": [],
       "hours": {
         "text": "24 hours a day, 7 days a week",
-        "schedule": null
+        "schedule": {
+          "timeZone": "America/Toronto",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "00:00",
+              "closes": "24:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -10032,7 +10618,22 @@
       "otherNumbers": [],
       "hours": {
         "text": "Monday to Friday, 8 a.m. to 8 p.m. UK time",
-        "schedule": null
+        "schedule": {
+          "timeZone": "Europe/London",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "opens": "08:00",
+              "closes": "20:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -10137,7 +10738,24 @@
       "otherNumbers": [],
       "hours": {
         "text": "Every day, 8 a.m. to 8 p.m. UK time",
-        "schedule": null
+        "schedule": {
+          "timeZone": "Europe/London",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "08:00",
+              "closes": "20:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -10173,7 +10791,24 @@
       "otherNumbers": [],
       "hours": {
         "text": "Every day, 8 a.m. to 8 p.m. UK time",
-        "schedule": null
+        "schedule": {
+          "timeZone": "Europe/London",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "08:00",
+              "closes": "20:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -10209,7 +10844,24 @@
       "otherNumbers": [],
       "hours": {
         "text": "Every day, 8 a.m. to 8 p.m. UK time",
-        "schedule": null
+        "schedule": {
+          "timeZone": "Europe/London",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "08:00",
+              "closes": "20:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -10245,7 +10897,24 @@
       "otherNumbers": [],
       "hours": {
         "text": "Every day, 8 a.m. to 6 p.m. UK time; closed on bank holidays",
-        "schedule": null
+        "schedule": {
+          "timeZone": "Europe/London",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "08:00",
+              "closes": "18:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -10290,7 +10959,24 @@
       "otherNumbers": [],
       "hours": {
         "text": "Every day, 8 a.m. to 6 p.m. UK time; closed on bank holidays",
-        "schedule": null
+        "schedule": {
+          "timeZone": "Europe/London",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "08:00",
+              "closes": "18:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -10335,7 +11021,24 @@
       "otherNumbers": [],
       "hours": {
         "text": "Every day, 8 a.m. to 6 p.m. UK time; closed on bank holidays",
-        "schedule": null
+        "schedule": {
+          "timeZone": "Europe/London",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "08:00",
+              "closes": "18:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -10371,7 +11074,24 @@
       "otherNumbers": [],
       "hours": {
         "text": "Every day, 8 a.m. to 6 p.m. UK time; closed on bank holidays",
-        "schedule": null
+        "schedule": {
+          "timeZone": "Europe/London",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "08:00",
+              "closes": "18:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -10407,7 +11127,24 @@
       "otherNumbers": [],
       "hours": {
         "text": "Every day, 8 a.m. to 6 p.m. UK time; closed on bank holidays",
-        "schedule": null
+        "schedule": {
+          "timeZone": "Europe/London",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "08:00",
+              "closes": "18:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -10704,7 +11441,30 @@
       "otherNumbers": [],
       "hours": {
         "text": "Monday to Saturday, 8 a.m. to 8 p.m.; Sunday, 9 a.m. to 5 p.m. UK time",
-        "schedule": null
+        "schedule": {
+          "timeZone": "Europe/London",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat"
+              ],
+              "opens": "08:00",
+              "closes": "20:00"
+            },
+            {
+              "days": [
+                "sun"
+              ],
+              "opens": "09:00",
+              "closes": "17:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -10770,7 +11530,30 @@
       "otherNumbers": [],
       "hours": {
         "text": "Monday to Saturday, 8 a.m. to 8 p.m.; Sunday, 9 a.m. to 5 p.m.; bank holidays, 8 a.m. to 8 p.m. UK time",
-        "schedule": null
+        "schedule": {
+          "timeZone": "Europe/London",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat"
+              ],
+              "opens": "08:00",
+              "closes": "20:00"
+            },
+            {
+              "days": [
+                "sun"
+              ],
+              "opens": "09:00",
+              "closes": "17:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -10836,7 +11619,30 @@
       "otherNumbers": [],
       "hours": {
         "text": "Monday to Saturday, 8 a.m. to 8 p.m.; Sunday, 9 a.m. to 5 p.m.; bank holidays, 8 a.m. to 8 p.m. UK time",
-        "schedule": null
+        "schedule": {
+          "timeZone": "Europe/London",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat"
+              ],
+              "opens": "08:00",
+              "closes": "20:00"
+            },
+            {
+              "days": [
+                "sun"
+              ],
+              "opens": "09:00",
+              "closes": "17:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -10881,7 +11687,30 @@
       "otherNumbers": [],
       "hours": {
         "text": "Monday to Saturday, 8 a.m. to 8 p.m.; Sunday, 9 a.m. to 5 p.m.; bank holidays, 8 a.m. to 8 p.m. UK time",
-        "schedule": null
+        "schedule": {
+          "timeZone": "Europe/London",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat"
+              ],
+              "opens": "08:00",
+              "closes": "20:00"
+            },
+            {
+              "days": [
+                "sun"
+              ],
+              "opens": "09:00",
+              "closes": "17:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -11565,7 +12394,32 @@
         "display": "0345 609 0111"
       },
       "otherNumbers": [],
-      "hours": null,
+      "hours": {
+        "text": "Monday to Friday, 8 a.m. to 8 p.m.; Saturday, 8 a.m. to 4 p.m. UK time",
+        "schedule": {
+          "timeZone": "Europe/London",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "opens": "08:00",
+              "closes": "20:00"
+            },
+            {
+              "days": [
+                "sat"
+              ],
+              "opens": "08:00",
+              "closes": "16:00"
+            }
+          ]
+        }
+      },
       "officialTip": null,
       "source": {
         "url": "https://www.bupa.co.uk/health/health-insurance/health-insurance-contact-us",
@@ -11578,7 +12432,7 @@
       "waitOnHold": null,
       "callLength": null,
       "lastTestedOn": null,
-      "lastChangedOn": "2026-11-22",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/directory/gb/insurance/providers/bupa",
         "reachGuide": null
@@ -11967,7 +12821,25 @@
         "display": "+44 1403 288 410"
       },
       "otherNumbers": [],
-      "hours": null,
+      "hours": {
+        "text": "Monday to Friday, 9 a.m. to 5 p.m. UK time",
+        "schedule": {
+          "timeZone": "Europe/London",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "opens": "09:00",
+              "closes": "17:00"
+            }
+          ]
+        }
+      },
       "officialTip": null,
       "source": {
         "url": "https://www.staysure.co.uk/claims/",
@@ -11982,7 +12854,7 @@
       "waitOnHold": null,
       "callLength": null,
       "lastTestedOn": null,
-      "lastChangedOn": "2026-11-26",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/directory/gb/insurance/providers/staysure",
         "reachGuide": null
@@ -12033,7 +12905,24 @@
       "otherNumbers": [],
       "hours": {
         "text": "24 hours a day, 7 days a week",
-        "schedule": null
+        "schedule": {
+          "timeZone": "Europe/London",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "00:00",
+              "closes": "24:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -13561,7 +14450,27 @@
         "display": "+61 2 9999 3283"
       },
       "otherNumbers": [],
-      "hours": null,
+      "hours": {
+        "text": "24 hours a day, 7 days a week (calls from overseas)",
+        "schedule": {
+          "timeZone": "Australia/Sydney",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "00:00",
+              "closes": "24:00"
+            }
+          ]
+        }
+      },
       "officialTip": null,
       "source": {
         "url": "https://www.commbank.com.au/support/contact-us.html",
@@ -13585,7 +14494,7 @@
       "waitOnHold": null,
       "callLength": null,
       "lastTestedOn": "2026-11-24",
-      "lastChangedOn": "2026-11-24",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/directory/au/banks/providers/commonwealth-bank",
         "reachGuide": null
@@ -13788,7 +14697,24 @@
       "otherNumbers": [],
       "hours": {
         "text": "24 hours a day, 7 days a week",
-        "schedule": null
+        "schedule": {
+          "timeZone": "Australia/Sydney",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "00:00",
+              "closes": "24:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -14185,7 +15111,33 @@
         "display": "+61 3 8520 1300"
       },
       "otherNumbers": [],
-      "hours": null,
+      "hours": {
+        "text": "Monday to Friday, 8 a.m. to 7 p.m.; Saturday and Sunday, 8 a.m. to 5 p.m. Sydney time (AEDT)",
+        "schedule": {
+          "timeZone": "Australia/Sydney",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "opens": "08:00",
+              "closes": "19:00"
+            },
+            {
+              "days": [
+                "sat",
+                "sun"
+              ],
+              "opens": "08:00",
+              "closes": "17:00"
+            }
+          ]
+        }
+      },
       "officialTip": null,
       "source": {
         "url": "https://www.aami.com.au/contact/car",
@@ -14218,7 +15170,7 @@
       "waitOnHold": null,
       "callLength": null,
       "lastTestedOn": "2026-11-26",
-      "lastChangedOn": "2026-11-26",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/directory/au/insurance/providers/aami",
         "reachGuide": null
@@ -14499,7 +15451,27 @@
         "display": "+61 7 3362 1222"
       },
       "otherNumbers": [],
-      "hours": null,
+      "hours": {
+        "text": "Every day, 8 a.m. to 7 p.m. AEST",
+        "schedule": {
+          "timeZone": "Australia/Brisbane",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "08:00",
+              "closes": "19:00"
+            }
+          ]
+        }
+      },
       "officialTip": null,
       "source": {
         "url": "https://www.suncorp.com.au/contact-us/home-property.html",
@@ -14540,7 +15512,7 @@
       "waitOnHold": null,
       "callLength": null,
       "lastTestedOn": "2026-11-26",
-      "lastChangedOn": "2026-11-26",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/directory/au/insurance/providers/suncorp-insurance",
         "reachGuide": null
@@ -14591,7 +15563,27 @@
         "display": "13 11 55"
       },
       "otherNumbers": [],
-      "hours": null,
+      "hours": {
+        "text": "Every day, 8 a.m. to 7 p.m. AEST",
+        "schedule": {
+          "timeZone": "Australia/Brisbane",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "08:00",
+              "closes": "19:00"
+            }
+          ]
+        }
+      },
       "officialTip": null,
       "source": {
         "url": "https://www.suncorp.com.au/contact-us/home-property.html",
@@ -14632,7 +15624,7 @@
       "waitOnHold": null,
       "callLength": null,
       "lastTestedOn": "2026-11-25",
-      "lastChangedOn": "2026-11-25",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/directory/au/insurance/providers/suncorp-insurance",
         "reachGuide": null
@@ -14683,7 +15675,27 @@
         "display": "13 11 17"
       },
       "otherNumbers": [],
-      "hours": null,
+      "hours": {
+        "text": "24 hours a day, 7 days a week",
+        "schedule": {
+          "timeZone": "Australia/Sydney",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "00:00",
+              "closes": "24:00"
+            }
+          ]
+        }
+      },
       "officialTip": null,
       "source": {
         "url": "https://www.youi.com.au/contact",
@@ -14716,7 +15728,7 @@
       "waitOnHold": null,
       "callLength": null,
       "lastTestedOn": "2026-11-25",
-      "lastChangedOn": "2026-11-25",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/directory/au/insurance/providers/youi",
         "reachGuide": null
@@ -14938,7 +15950,32 @@
         "display": "13 13 34"
       },
       "otherNumbers": [],
-      "hours": null,
+      "hours": {
+        "text": "Monday to Friday, 8 a.m. to 8 p.m.; Saturday, 9 a.m. to 1 p.m. AEST/AEDT",
+        "schedule": {
+          "timeZone": "Australia/Sydney",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "opens": "08:00",
+              "closes": "20:00"
+            },
+            {
+              "days": [
+                "sat"
+              ],
+              "opens": "09:00",
+              "closes": "13:00"
+            }
+          ]
+        }
+      },
       "officialTip": null,
       "source": {
         "url": "https://www.hcf.com.au/contact-us",
@@ -14983,7 +16020,7 @@
       "waitOnHold": null,
       "callLength": null,
       "lastTestedOn": "2026-11-25",
-      "lastChangedOn": "2026-11-25",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/directory/au/insurance/providers/hcf",
         "reachGuide": null
@@ -15001,7 +16038,25 @@
         "display": "+61 2 7230 5100"
       },
       "otherNumbers": [],
-      "hours": null,
+      "hours": {
+        "text": "Monday to Friday, 8:30 a.m. to 5 p.m. AEST/AEDT",
+        "schedule": {
+          "timeZone": "Australia/Sydney",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "opens": "08:30",
+              "closes": "17:00"
+            }
+          ]
+        }
+      },
       "officialTip": null,
       "source": {
         "url": "https://www.hcf.com.au/contact-us",
@@ -15016,7 +16071,7 @@
       "waitOnHold": null,
       "callLength": null,
       "lastTestedOn": null,
-      "lastChangedOn": "2026-11-26",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/directory/au/insurance/providers/hcf",
         "reachGuide": null
@@ -15034,7 +16089,25 @@
         "display": "13 68 42"
       },
       "otherNumbers": [],
-      "hours": null,
+      "hours": {
+        "text": "Monday to Friday, 8:30 a.m. to 5 p.m. AEST/AEDT",
+        "schedule": {
+          "timeZone": "Australia/Sydney",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "opens": "08:30",
+              "closes": "17:00"
+            }
+          ]
+        }
+      },
       "officialTip": null,
       "source": {
         "url": "https://www.hcf.com.au/contact-us",
@@ -15049,7 +16122,7 @@
       "waitOnHold": null,
       "callLength": null,
       "lastTestedOn": null,
-      "lastChangedOn": "2026-11-25",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/directory/au/insurance/providers/hcf",
         "reachGuide": null
@@ -15181,7 +16254,25 @@
         "display": "+61 2 9692 4300"
       },
       "otherNumbers": [],
-      "hours": null,
+      "hours": {
+        "text": "Monday to Friday, 8 a.m. to 6 p.m. AEST/AEDT; closed on weekends and NSW public holidays",
+        "schedule": {
+          "timeZone": "Australia/Sydney",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "opens": "08:00",
+              "closes": "18:00"
+            }
+          ]
+        }
+      },
       "officialTip": null,
       "source": {
         "url": "https://www.nib.com.au/contact-us",
@@ -15205,7 +16296,7 @@
       "waitOnHold": null,
       "callLength": null,
       "lastTestedOn": "2026-11-26",
-      "lastChangedOn": "2026-11-26",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/directory/au/insurance/providers/nib",
         "reachGuide": null
@@ -15223,7 +16314,25 @@
         "display": "13 16 42"
       },
       "otherNumbers": [],
-      "hours": null,
+      "hours": {
+        "text": "Monday to Friday, 8 a.m. to 6 p.m. AEST/AEDT; closed on weekends and NSW public holidays",
+        "schedule": {
+          "timeZone": "Australia/Sydney",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "opens": "08:00",
+              "closes": "18:00"
+            }
+          ]
+        }
+      },
       "officialTip": null,
       "source": {
         "url": "https://www.nib.com.au/contact-us",
@@ -15247,7 +16356,7 @@
       "waitOnHold": null,
       "callLength": null,
       "lastTestedOn": "2026-11-25",
-      "lastChangedOn": "2026-11-25",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/directory/au/insurance/providers/nib",
         "reachGuide": null
@@ -15265,7 +16374,25 @@
         "display": "+61 2 9692 4488"
       },
       "otherNumbers": [],
-      "hours": null,
+      "hours": {
+        "text": "Monday to Friday, 8:30 a.m. to 6 p.m. AEST/AEDT; closed on weekends and public holidays",
+        "schedule": {
+          "timeZone": "Australia/Sydney",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "opens": "08:30",
+              "closes": "18:00"
+            }
+          ]
+        }
+      },
       "officialTip": null,
       "source": {
         "url": "https://www.nib.com.au/contact-us",
@@ -15307,7 +16434,25 @@
         "display": "1800 775 204"
       },
       "otherNumbers": [],
-      "hours": null,
+      "hours": {
+        "text": "Monday to Friday, 8:30 a.m. to 6 p.m. AEST/AEDT; closed on weekends and public holidays",
+        "schedule": {
+          "timeZone": "Australia/Sydney",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "opens": "08:30",
+              "closes": "18:00"
+            }
+          ]
+        }
+      },
       "officialTip": null,
       "source": {
         "url": "https://www.nib.com.au/contact-us",
@@ -15331,7 +16476,7 @@
       "waitOnHold": null,
       "callLength": null,
       "lastTestedOn": "2026-11-26",
-      "lastChangedOn": "2026-11-26",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/directory/au/insurance/providers/nib",
         "reachGuide": null
@@ -15800,7 +16945,27 @@
         "display": "+61 2 8776 3010"
       },
       "otherNumbers": [],
-      "hours": null,
+      "hours": {
+        "text": "24 hours a day, 7 days a week (emergency assistance, 365 days a year)",
+        "schedule": {
+          "timeZone": "Australia/Sydney",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "00:00",
+              "closes": "24:00"
+            }
+          ]
+        }
+      },
       "officialTip": null,
       "source": {
         "url": "https://www.1cover.com.au/claims/emergency-contacts/",
@@ -15824,7 +16989,7 @@
       "waitOnHold": null,
       "callLength": null,
       "lastTestedOn": "2026-11-26",
-      "lastChangedOn": "2026-11-26",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/directory/au/insurance/providers/1cover",
         "reachGuide": null
@@ -15842,7 +17007,27 @@
         "display": "1300 884 508"
       },
       "otherNumbers": [],
-      "hours": null,
+      "hours": {
+        "text": "24 hours a day, 7 days a week (emergency assistance, 365 days a year)",
+        "schedule": {
+          "timeZone": "Australia/Sydney",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "00:00",
+              "closes": "24:00"
+            }
+          ]
+        }
+      },
       "officialTip": null,
       "source": {
         "url": "https://www.1cover.com.au/claims/emergency-contacts/",
@@ -15866,7 +17051,7 @@
       "waitOnHold": null,
       "callLength": null,
       "lastTestedOn": "2026-11-25",
-      "lastChangedOn": "2026-11-25",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/directory/au/insurance/providers/1cover",
         "reachGuide": null
@@ -16213,7 +17398,24 @@
       "otherNumbers": [],
       "hours": {
         "text": "24 hours a day, 7 days a week (within Australia)",
-        "schedule": null
+        "schedule": {
+          "timeZone": "Australia/Sydney",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "00:00",
+              "closes": "24:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -16786,7 +17988,33 @@
         "display": "136 333"
       },
       "otherNumbers": [],
-      "hours": null,
+      "hours": {
+        "text": "Monday to Friday, 7 a.m. to 9 p.m.; Saturday and Sunday, 9 a.m. to 7 p.m. AEST",
+        "schedule": {
+          "timeZone": "Australia/Brisbane",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "opens": "07:00",
+              "closes": "21:00"
+            },
+            {
+              "days": [
+                "sat",
+                "sun"
+              ],
+              "opens": "09:00",
+              "closes": "19:00"
+            }
+          ]
+        }
+      },
       "officialTip": null,
       "source": {
         "url": "https://www.avis.com.au/en/contact",
@@ -16872,7 +18100,25 @@
         "display": "1800 141 000"
       },
       "otherNumbers": [],
-      "hours": null,
+      "hours": {
+        "text": "Monday to Friday, 9 a.m. to 5 p.m. AEST; closed on weekends",
+        "schedule": {
+          "timeZone": "Australia/Brisbane",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "opens": "09:00",
+              "closes": "17:00"
+            }
+          ]
+        }
+      },
       "officialTip": null,
       "source": {
         "url": "https://www.avis.com.au/en/contact",
@@ -16885,7 +18131,7 @@
       "waitOnHold": null,
       "callLength": null,
       "lastTestedOn": null,
-      "lastChangedOn": "2026-11-22",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/directory/au/car-rentals/providers/avis",
         "reachGuide": null
@@ -18271,7 +19517,28 @@
       "otherNumbers": [],
       "hours": {
         "text": "Monday to Thursday, 8 a.m. to 6 p.m.; Friday, 8 a.m. to 2 p.m. German time",
-        "schedule": null
+        "schedule": {
+          "timeZone": "Europe/Berlin",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu"
+              ],
+              "opens": "08:00",
+              "closes": "18:00"
+            },
+            {
+              "days": [
+                "fri"
+              ],
+              "opens": "08:00",
+              "closes": "14:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -18307,7 +19574,28 @@
       "otherNumbers": [],
       "hours": {
         "text": "Monday to Thursday, 8 a.m. to 6 p.m.; Friday, 8 a.m. to 2 p.m. German time",
-        "schedule": null
+        "schedule": {
+          "timeZone": "Europe/Berlin",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu"
+              ],
+              "opens": "08:00",
+              "closes": "18:00"
+            },
+            {
+              "days": [
+                "fri"
+              ],
+              "opens": "08:00",
+              "closes": "14:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -18361,7 +19649,22 @@
       "otherNumbers": [],
       "hours": {
         "text": "Monday to Friday, 9 a.m. to 3 p.m. German time",
-        "schedule": null
+        "schedule": {
+          "timeZone": "Europe/Berlin",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "opens": "09:00",
+              "closes": "15:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -18463,7 +19766,24 @@
       "otherNumbers": [],
       "hours": {
         "text": "24 hours a day, 7 days a week",
-        "schedule": null
+        "schedule": {
+          "timeZone": "Europe/Berlin",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "00:00",
+              "closes": "24:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -18517,7 +19837,24 @@
       "otherNumbers": [],
       "hours": {
         "text": "24 hours a day, 7 days a week",
-        "schedule": null
+        "schedule": {
+          "timeZone": "Europe/Berlin",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "00:00",
+              "closes": "24:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -18619,7 +19956,23 @@
       "otherNumbers": [],
       "hours": {
         "text": "Monday to Saturday, 7 a.m. to 10 p.m. German time",
-        "schedule": null
+        "schedule": {
+          "timeZone": "Europe/Berlin",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat"
+              ],
+              "opens": "07:00",
+              "closes": "22:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -18670,7 +20023,24 @@
       ],
       "hours": {
         "text": "24 hours a day, 7 days a week",
-        "schedule": null
+        "schedule": {
+          "timeZone": "Europe/Berlin",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "00:00",
+              "closes": "24:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -18735,7 +20105,24 @@
       "otherNumbers": [],
       "hours": {
         "text": "24 hours a day, 7 days a week",
-        "schedule": null
+        "schedule": {
+          "timeZone": "Europe/Berlin",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "00:00",
+              "closes": "24:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -18811,7 +20198,24 @@
       "otherNumbers": [],
       "hours": {
         "text": "24 hours a day, 7 days a week",
-        "schedule": null
+        "schedule": {
+          "timeZone": "Europe/Berlin",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "00:00",
+              "closes": "24:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -18845,7 +20249,24 @@
       "otherNumbers": [],
       "hours": {
         "text": "24 hours a day, 7 days a week",
-        "schedule": null
+        "schedule": {
+          "timeZone": "Europe/Berlin",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "00:00",
+              "closes": "24:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -18879,7 +20300,29 @@
       "otherNumbers": [],
       "hours": {
         "text": "Monday to Friday, 8 a.m. to 9 p.m.; Saturday, 8 a.m. to 2 p.m. German time",
-        "schedule": null
+        "schedule": {
+          "timeZone": "Europe/Berlin",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "opens": "08:00",
+              "closes": "21:00"
+            },
+            {
+              "days": [
+                "sat"
+              ],
+              "opens": "08:00",
+              "closes": "14:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -18944,7 +20387,24 @@
       "otherNumbers": [],
       "hours": {
         "text": "24 hours a day, 7 days a week",
-        "schedule": null
+        "schedule": {
+          "timeZone": "Europe/Berlin",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "00:00",
+              "closes": "24:00"
+            }
+          ]
+        }
       },
       "officialTip": null,
       "source": {
@@ -19161,14 +20621,36 @@
         "display": "1-877-727-2932"
       },
       "otherNumbers": [],
-      "hours": null,
+      "hours": {
+        "text": "24 hours a day, 7 days a week",
+        "schedule": {
+          "timeZone": "America/New_York",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat",
+                "sun"
+              ],
+              "opens": "00:00",
+              "closes": "24:00"
+            }
+          ]
+        }
+      },
       "officialTip": null,
       "source": {
         "url": "https://www.wellsfargo.com/help/contact-us/",
         "checkedOn": "2026-11-23",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
       "lastTestCall": null,
       "route": null,
       "waitOnHold": null,
@@ -19192,7 +20674,33 @@
         "display": "1-866-465-2762"
       },
       "otherNumbers": [],
-      "hours": null,
+      "hours": {
+        "text": "Monday to Friday, 8 a.m. to 9 p.m.; Saturday and Sunday, 8 a.m. to 5 p.m. Eastern Time",
+        "schedule": {
+          "timeZone": "America/New_York",
+          "periods": [
+            {
+              "days": [
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri"
+              ],
+              "opens": "08:00",
+              "closes": "21:00"
+            },
+            {
+              "days": [
+                "sat",
+                "sun"
+              ],
+              "opens": "08:00",
+              "closes": "17:00"
+            }
+          ]
+        }
+      },
       "officialTip": null,
       "source": {
         "url": "https://www.pnc.com/en/customer-service.html",
@@ -20335,7 +21843,9 @@
         "checkedOn": "2026-11-26",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
       "lastTestCall": null,
       "route": null,
       "waitOnHold": null,
@@ -20353,7 +21863,7 @@
       "kind": "bank",
       "department": "Credit cards · Standard French number",
       "country": "FR",
-      "status": "listed",
+      "status": "checked",
       "phone": {
         "e164": "+33969397777",
         "display": "+33 9 69 39 77 77"
@@ -20366,12 +21876,32 @@
         "checkedOn": "2026-11-26",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-27T10:02:36.535Z",
+        "number": "+33969397777",
+        "heard": "menu",
+        "firstAnnouncement": "The line welcomes callers to the Société Générale card blocking service. Press 1 to block a card, or 2 to block a cheque or for any other card request.",
+        "options": [
+          {
+            "key": "1",
+            "label": "Block your card"
+          },
+          {
+            "key": "2",
+            "label": "Block a cheque or other card requests"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "fr"
+      },
       "route": null,
       "waitOnHold": null,
       "callLength": null,
-      "lastTestedOn": null,
+      "lastTestedOn": "2026-11-27",
       "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/directory/fr/banks/providers/societe-generale",
@@ -20384,7 +21914,7 @@
       "kind": "bank",
       "department": "Everyday banking · Standard French number",
       "country": "FR",
-      "status": "listed",
+      "status": "checked",
       "phone": {
         "e164": "+33969393639",
         "display": "+33 9 69 39 36 39"
@@ -20397,12 +21927,25 @@
         "checkedOn": "2026-11-26",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-27T09:52:35.651Z",
+        "number": "+33969393639",
+        "heard": "private",
+        "firstAnnouncement": "The line welcomes callers to La Banque Postale and immediately asks them to enter their 10-digit customer ID followed by the hash key.",
+        "options": [],
+        "asksFirstFor": [
+          "customerNumber"
+        ],
+        "voiceAssistant": false,
+        "language": "fr"
+      },
       "route": null,
       "waitOnHold": null,
       "callLength": null,
-      "lastTestedOn": null,
+      "lastTestedOn": "2026-11-27",
       "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/directory/fr/banks/providers/la-banque-postale",
@@ -20415,7 +21958,7 @@
       "kind": "bank",
       "department": "App access / sign-up problems · Standard French number",
       "country": "FR",
-      "status": "listed",
+      "status": "checked",
       "phone": {
         "e164": "+33974753698",
         "display": "+33 9 74 75 36 98"
@@ -20428,12 +21971,23 @@
         "checkedOn": "2026-11-26",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-27T10:22:35.411Z",
+        "number": "+33974753698",
+        "heard": "message",
+        "firstAnnouncement": "The line greets callers to L by LCL and says that for a forgotten password or blocked app access they should hold for the L support team, while other requests go through the app. It then says all advisers are busy and asks callers to try again in a few minutes.",
+        "options": [],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "fr"
+      },
       "route": null,
       "waitOnHold": null,
       "callLength": null,
-      "lastTestedOn": null,
+      "lastTestedOn": "2026-11-27",
       "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/directory/fr/banks/providers/l-by-lcl",
@@ -20490,7 +22044,9 @@
         "checkedOn": "2026-11-26",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
       "lastTestCall": null,
       "route": null,
       "waitOnHold": null,
@@ -20521,7 +22077,9 @@
         "checkedOn": "2026-11-26",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
       "lastTestCall": null,
       "route": null,
       "waitOnHold": null,
@@ -20539,7 +22097,7 @@
       "kind": "bank",
       "department": "Credit cards · Standard French number",
       "country": "FR",
-      "status": "listed",
+      "status": "checked",
       "phone": {
         "e164": "+33388401000",
         "display": "+33 3 88 40 10 00"
@@ -20552,12 +22110,23 @@
         "checkedOn": "2026-11-26",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-27T08:48:38.074Z",
+        "number": "+33388401000",
+        "heard": "queue",
+        "firstAnnouncement": "The line welcomes callers to the Crédit Mutuel payment methods support service and asks them to wait for an advisor.",
+        "options": [],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "fr"
+      },
       "route": null,
       "waitOnHold": null,
       "callLength": null,
-      "lastTestedOn": null,
+      "lastTestedOn": "2026-11-27",
       "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/directory/fr/banks/providers/credit-mutuel",
@@ -20583,7 +22152,9 @@
         "checkedOn": "2026-11-26",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
       "lastTestCall": null,
       "route": null,
       "waitOnHold": null,
@@ -20601,7 +22172,7 @@
       "kind": "bank",
       "department": "Credit cards · Standard French number",
       "country": "FR",
-      "status": "listed",
+      "status": "checked",
       "phone": {
         "e164": "+33969363939",
         "display": "+33 9 69 36 39 39"
@@ -20614,12 +22185,28 @@
         "checkedOn": "2026-11-26",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-27T09:18:38.875Z",
+        "number": "+33969363939",
+        "heard": "menu",
+        "firstAnnouncement": "The Caisse d’Épargne card-blocking centre (centre des oppositions) welcomes callers and asks them to choose a language: press 1 for French, with an English option also offered.",
+        "options": [
+          {
+            "key": "1",
+            "label": "French"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "fr"
+      },
       "route": null,
       "waitOnHold": null,
       "callLength": null,
-      "lastTestedOn": null,
+      "lastTestedOn": "2026-11-27",
       "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/directory/fr/banks/providers/caisse-depargne",
@@ -22641,7 +24228,9 @@
         "checkedOn": "2026-11-26",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
       "lastTestCall": null,
       "route": null,
       "waitOnHold": null,
@@ -22672,7 +24261,9 @@
         "checkedOn": "2026-11-26",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
       "lastTestCall": null,
       "route": null,
       "waitOnHold": null,
@@ -22690,7 +24281,7 @@
       "kind": "bank",
       "department": "Everyday banking · Standard Irish number",
       "country": "IE",
-      "status": "listed",
+      "status": "checked",
       "phone": {
         "e164": "+35314044000",
         "display": "+353 1 404 4000"
@@ -22703,12 +24294,36 @@
         "checkedOn": "2026-11-26",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-27T11:12:37.771Z",
+        "number": "+35314044000",
+        "heard": "menu",
+        "firstAnnouncement": "The line greets callers to Bank of Ireland Direct with a recording notice. Callers press 1 for personal or 2 for business banking, or # to repeat the options.",
+        "options": [
+          {
+            "key": "1",
+            "label": "Personal"
+          },
+          {
+            "key": "2",
+            "label": "Business"
+          },
+          {
+            "key": "#",
+            "label": "Repeat options"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en"
+      },
       "route": null,
       "waitOnHold": null,
       "callLength": null,
-      "lastTestedOn": null,
+      "lastTestedOn": "2026-11-27",
       "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/directory/ie/banks/providers/bank-of-ireland",
@@ -22734,7 +24349,9 @@
         "checkedOn": "2026-11-26",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
       "lastTestCall": null,
       "route": null,
       "waitOnHold": null,
@@ -22752,7 +24369,7 @@
       "kind": "bank",
       "department": "Credit cards · Standard Irish number",
       "country": "IE",
-      "status": "listed",
+      "status": "checked",
       "phone": {
         "e164": "+35312124865",
         "display": "+353 1 212 4865"
@@ -22765,12 +24382,36 @@
         "checkedOn": "2026-11-26",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-27T10:42:36.254Z",
+        "number": "+35312124865",
+        "heard": "menu",
+        "firstAnnouncement": "The PTSB line plays a keypad menu: 1 for general self-service options, 2 for mortgage self-service options, 3 for credit card self-service options.",
+        "options": [
+          {
+            "key": "1",
+            "label": "General self-service options"
+          },
+          {
+            "key": "2",
+            "label": "Mortgage self-service options"
+          },
+          {
+            "key": "3",
+            "label": "Credit card self-service options"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en"
+      },
       "route": null,
       "waitOnHold": null,
       "callLength": null,
-      "lastTestedOn": null,
+      "lastTestedOn": "2026-11-27",
       "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/directory/ie/banks/providers/ptsb",
@@ -22783,7 +24424,7 @@
       "kind": "bank",
       "department": "Everyday banking · Standard Irish number",
       "country": "IE",
-      "status": "listed",
+      "status": "checked",
       "phone": {
         "e164": "+35317058000",
         "display": "+353 1 705 8000"
@@ -22796,12 +24437,40 @@
         "checkedOn": "2026-11-26",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-27T11:32:35.995Z",
+        "number": "+35317058000",
+        "heard": "menu",
+        "firstAnnouncement": "The line welcomes callers to An Post Money and offers a keypad menu. Press 1 for current accounts, 2 for credit cards and loans, 3 for currency cards, 4 for State Savings products.",
+        "options": [
+          {
+            "key": "1",
+            "label": "Current accounts"
+          },
+          {
+            "key": "2",
+            "label": "Credit cards and loans"
+          },
+          {
+            "key": "3",
+            "label": "Currency cards"
+          },
+          {
+            "key": "4",
+            "label": "State Savings products"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en"
+      },
       "route": null,
       "waitOnHold": null,
       "callLength": null,
-      "lastTestedOn": null,
+      "lastTestedOn": "2026-11-27",
       "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/directory/ie/banks/providers/an-post-money",
@@ -22889,7 +24558,9 @@
         "checkedOn": "2026-11-26",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
       "lastTestCall": null,
       "route": null,
       "waitOnHold": null,
@@ -23673,6 +25344,2765 @@
       "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/directory/ie/car-rentals/providers/hertz-ireland",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "state-bank-of-india-sbi-everyday-banking-standard-indian",
+      "name": "State Bank of India (SBI)",
+      "kind": "bank",
+      "department": "Everyday banking · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+918026599990",
+        "display": "+91 80 2659 9990"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://sbi.bank.in/web/customer-care/contact-us",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/banks/providers/state-bank-of-india",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "hdfc-bank-everyday-banking-standard-indian-number",
+      "name": "HDFC Bank",
+      "kind": "bank",
+      "department": "Everyday banking · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+912261606160",
+        "display": "+91 22 6160 6160"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.hdfc.bank.in/contact-us",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/banks/providers/hdfc-bank",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "icici-bank-everyday-banking-domestic-account-holders",
+      "name": "ICICI Bank",
+      "kind": "bank",
+      "department": "Everyday banking · Domestic account holders travelling abroad · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+912233667777",
+        "display": "+91 22 3366 7777"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.icici.bank.in/customer-care",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/banks/providers/icici-bank",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "icici-bank-everyday-banking-non-resident-indian-customers",
+      "name": "ICICI Bank",
+      "kind": "bank",
+      "department": "Everyday banking · Non-resident Indian (NRI) customers · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+914030998025",
+        "display": "+91 40 3099 8025"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.icici.bank.in/customer-care",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/banks/providers/icici-bank",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "axis-bank-everyday-banking-standard-indian-number",
+      "name": "Axis Bank",
+      "kind": "bank",
+      "department": "Everyday banking · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+914067174100",
+        "display": "+91 40 6717 4100"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.axis.bank.in/contact-us",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/banks/providers/axis-bank",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "axis-bank-credit-cards-standard-indian-number",
+      "name": "Axis Bank",
+      "kind": "bank",
+      "department": "Credit cards · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+912227648000",
+        "display": "+91 22 2764 8000"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.axis.bank.in/contact-us",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/banks/providers/axis-bank",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "punjab-national-bank-pnb-everyday-banking-standard-indian",
+      "name": "Punjab National Bank (PNB)",
+      "kind": "bank",
+      "department": "Everyday banking · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+911202490000",
+        "display": "+91 120 249 0000"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://pnb.bank.in/contact-centre.html",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/banks/providers/punjab-national-bank",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "kotak-mahindra-bank-credit-cards-standard-indian-number",
+      "name": "Kotak Mahindra Bank",
+      "kind": "bank",
+      "department": "Credit cards · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+912266006022",
+        "display": "+91 22 6600 6022"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.kotak.bank.in/en/customer-service/contact-us.html",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/banks/providers/kotak-mahindra-bank",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "yes-bank-everyday-banking-standard-indian-number",
+      "name": "YES BANK",
+      "kind": "bank",
+      "department": "Everyday banking · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+912230993600",
+        "display": "+91 22 3099 3600"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.yes.bank.in/contact-us",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/banks/providers/yes-bank",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "federal-bank-everyday-banking-standard-indian-number",
+      "name": "Federal Bank",
+      "kind": "bank",
+      "department": "Everyday banking · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+914842630994",
+        "display": "+91 484 263 0994"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.federal.bank.in/contact-center",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/banks/providers/federal-bank",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "federal-bank-everyday-banking-standard-indian-number-2",
+      "name": "Federal Bank",
+      "kind": "bank",
+      "department": "Everyday banking · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+914842630995",
+        "display": "+91 484 263 0995"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.federal.bank.in/contact-center",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/banks/providers/federal-bank",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "hdfc-ergo-customer-service-standard-indian-number",
+      "name": "HDFC ERGO",
+      "kind": "insurance",
+      "department": "Customer service · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+912262346234",
+        "display": "+91 22 6234 6234"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.hdfcergo.com/",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/insurance/providers/hdfc-ergo",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "star-health-private-health-plan-support-standard-indian",
+      "name": "Star Health",
+      "kind": "insurance",
+      "department": "Private health plan support · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+914469006900",
+        "display": "+91 44 6900 6900"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.starhealth.in/grievance-redressal/",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/insurance/providers/star-health",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "life-insurance-corporation-of-india-lic-individual-life",
+      "name": "Life Insurance Corporation of India (LIC)",
+      "kind": "insurance",
+      "department": "Individual life insurance · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+912268276827",
+        "display": "+91 22 6827 6827"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://licindia.in/phone-help-line",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/insurance/providers/life-insurance-corporation-of-india",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "hdfc-life-individual-life-insurance-non-resident-indian",
+      "name": "HDFC Life",
+      "kind": "insurance",
+      "department": "Individual life insurance · Non-resident Indian (NRI) customers · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+918916694100",
+        "display": "+91 89166 94100"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.hdfclife.com/contact-us",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/insurance/providers/hdfc-life",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "sbi-life-individual-life-insurance-non-resident-indian",
+      "name": "SBI Life",
+      "kind": "insurance",
+      "department": "Individual life insurance · Non-resident Indian (NRI) customers · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+912269289090",
+        "display": "+91 22 6928 9090"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.sbilife.co.in/24x7-inbound-contact-centre",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/insurance/providers/sbi-life",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "tata-aig-travel-insurance-assistance-policies-excluding-the",
+      "name": "Tata AIG",
+      "kind": "insurance",
+      "department": "Travel insurance assistance · Policies excluding the Americas · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+912268227600",
+        "display": "+91 22 6822 7600"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.tataaig.com/travel-insurance/travel-insurance-claim-assistance",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/insurance/providers/tata-aig",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "air-india-customer-relations-and-complaints-standard-indian",
+      "name": "Air India",
+      "kind": "airline",
+      "department": "Customer relations and complaints · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+911169329333",
+        "display": "+91 11 6932 9333"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.airindia.com/in/en/contact-us.html",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/airlines/providers/air-india",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "air-india-customer-relations-and-complaints-standard-indian-2",
+      "name": "Air India",
+      "kind": "airline",
+      "department": "Customer relations and complaints · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+911169329999",
+        "display": "+91 11 6932 9999"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.airindia.com/in/en/contact-us.html",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/airlines/providers/air-india",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "indigo-customer-relations-and-complaints-standard-indian",
+      "name": "IndiGo",
+      "kind": "airline",
+      "department": "Customer relations and complaints · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+911246173838",
+        "display": "+91 124 617 3838"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.goindigo.in/contact-us.html",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/airlines/providers/indigo",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "indigo-customer-relations-and-complaints-standard-indian-2",
+      "name": "IndiGo",
+      "kind": "airline",
+      "department": "Customer relations and complaints · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+911244973838",
+        "display": "+91 124 497 3838"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.goindigo.in/contact-us.html",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/airlines/providers/indigo",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "spicejet-flight-reservations-standard-indian-number",
+      "name": "SpiceJet",
+      "kind": "airline",
+      "department": "Flight reservations · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+911247101600",
+        "display": "+91 124 710 1600"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://corporate.spicejet.com/ContactUs.aspx",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/airlines/providers/spicejet",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "spicejet-flight-reservations-standard-indian-number-2",
+      "name": "SpiceJet",
+      "kind": "airline",
+      "department": "Flight reservations · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+911244983410",
+        "display": "+91 124 498 3410"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://corporate.spicejet.com/ContactUs.aspx",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/airlines/providers/spicejet",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "alliance-air-customer-relations-and-complaints-standard",
+      "name": "Alliance Air",
+      "kind": "airline",
+      "department": "Customer relations and complaints · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+914442554255",
+        "display": "+91 44 4255 4255"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://plone.allianceair.in/allianceair/en/assets/faqs/faqs-25-8-2025.pdf",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/airlines/providers/alliance-air",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "alliance-air-customer-relations-and-complaints-standard-2",
+      "name": "Alliance Air",
+      "kind": "airline",
+      "department": "Customer relations and complaints · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+914435113511",
+        "display": "+91 44 3511 3511"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://plone.allianceair.in/allianceair/en/assets/faqs/faqs-25-8-2025.pdf",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/airlines/providers/alliance-air",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "akasa-air-baggage-support-standard-indian-number",
+      "name": "Akasa Air",
+      "kind": "airline",
+      "department": "Baggage support · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+919606112131",
+        "display": "+91 96061 12131"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.akasaair.com/add-ons/excess-baggage",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/airlines/providers/akasa-air",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "taj-hotels-hotel-reservations-standard-indian-number",
+      "name": "Taj Hotels",
+      "kind": "hotel",
+      "department": "Hotel reservations · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+912266011825",
+        "display": "+91 22 6601 1825"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.tajhotels.com/en-in/contact-us",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/hotels/providers/taj-hotels",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "itc-hotels-hotel-reservations-standard-indian-number",
+      "name": "ITC Hotels",
+      "kind": "hotel",
+      "department": "Hotel reservations · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+911244816900",
+        "display": "+91 124 481 6900"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.itchotels.com/in/en/contact-us",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/hotels/providers/itc-hotels",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "itc-hotels-hotel-reservations-standard-indian-number-2",
+      "name": "ITC Hotels",
+      "kind": "hotel",
+      "department": "Hotel reservations · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+911246718000",
+        "display": "+91 124 671 8000"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.itchotels.com/in/en/contact-us",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/hotels/providers/itc-hotels",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "the-oberoi-hotels-and-resorts-hotel-reservations-standard",
+      "name": "The Oberoi Hotels & Resorts",
+      "kind": "hotel",
+      "department": "Hotel reservations · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+911169110606",
+        "display": "+91 11 6911 0606"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.oberoihotels.com/contact-us/",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/hotels/providers/oberoi-hotels",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "the-leela-palaces-hotels-and-resorts-hotel-reservations",
+      "name": "The Leela Palaces, Hotels and Resorts",
+      "kind": "hotel",
+      "department": "Hotel reservations · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+911244425444",
+        "display": "+91 124 4425 444"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.theleela.com/contact-us",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/hotels/providers/the-leela",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "lemon-tree-hotels-hotel-reservations-standard-indian-number",
+      "name": "Lemon Tree Hotels",
+      "kind": "hotel",
+      "department": "Hotel reservations · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+919911701701",
+        "display": "+91 99117 01701"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.lemontreehotels.com/contact-us",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/hotels/providers/lemon-tree-hotels",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "the-lalit-new-delhi-hotel-reservations-and-support-standard",
+      "name": "The LaLiT New Delhi",
+      "kind": "hotel",
+      "department": "Hotel reservations and support · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+911144447777",
+        "display": "+91 11 4444 7777"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.thelalit.com/contact-us/",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/hotels/providers/the-lalit-new-delhi",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "trident-nariman-point-mumbai-hotel-reservations-and-support",
+      "name": "Trident, Nariman Point, Mumbai",
+      "kind": "hotel",
+      "department": "Hotel reservations and support · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+912266324343",
+        "display": "+91 22 6632 4343"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.tridenthotels.com/contact-us/",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/hotels/providers/trident-nariman-point-mumbai",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "hyderabad-marriott-hotel-and-convention-centre-hotel",
+      "name": "Hyderabad Marriott Hotel & Convention Centre",
+      "kind": "hotel",
+      "department": "Hotel reservations · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+914066522228",
+        "display": "+91 40 6652 2228"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.marriott.com/en-us/hotels/hydmc-hyderabad-marriott-hotel-and-convention-centre/overview/",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/hotels/providers/hyderabad-marriott",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "avis-india-after-rental-customer-service-standard-indian",
+      "name": "Avis India",
+      "kind": "car-rental",
+      "department": "After-rental customer service · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+911244724888",
+        "display": "+91 124 4724 888"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.avis.co.in/contact-us",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/car-rentals/providers/avis-india",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "revv-after-rental-customer-service-standard-indian-number",
+      "name": "Revv",
+      "kind": "car-rental",
+      "department": "After-rental customer service · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+919250035555",
+        "display": "+91 92500 35555"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.revv.co.in/policy",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/car-rentals/providers/revv",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "eco-mobility-car-rental-reservations-standard-indian-number",
+      "name": "ECO Mobility",
+      "kind": "car-rental",
+      "department": "Car rental reservations · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+919654999666",
+        "display": "+91 96549 99666"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.ecorentacar.com/contact/",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/car-rentals/providers/eco-mobility",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "eco-mobility-after-rental-customer-service-standard-indian",
+      "name": "ECO Mobility",
+      "kind": "car-rental",
+      "department": "After-rental customer service · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+919654999777",
+        "display": "+91 96549 99777"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.ecorentacar.com/contact/",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/car-rentals/providers/eco-mobility",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "europcar-india-car-rental-reservations-standard-indian",
+      "name": "Europcar India",
+      "kind": "car-rental",
+      "department": "Car rental reservations · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+919650950061",
+        "display": "+91 96509 50061"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.europcar.com/en-in/places/car-rental-india",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/car-rentals/providers/europcar-india",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "savaari-car-rentals-car-rental-reservations-standard-indian",
+      "name": "Savaari Car Rentals",
+      "kind": "car-rental",
+      "department": "Car rental reservations · Standard Indian number",
+      "country": "IN",
+      "status": "listed",
+      "phone": {
+        "e164": "+919045450000",
+        "display": "+91 90454 50000"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.savaari.com/",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/in/car-rentals/providers/savaari",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "mufg-bank-everyday-banking-standard-japanese-number",
+      "name": "MUFG Bank",
+      "kind": "bank",
+      "department": "Everyday banking · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81423117777",
+        "display": "+81 42 311 7777"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://direct.bk.mufg.jp/btm/banking/telephonebanking.html",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/banks/providers/mufg-bank",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "sumitomo-mitsui-banking-corporation-smbc-credit-cards",
+      "name": "Sumitomo Mitsui Banking Corporation (SMBC)",
+      "kind": "bank",
+      "department": "Credit cards · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81368629478",
+        "display": "+81 3 6862 9478"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://qa.smbc.co.jp/faq/show/284?site_domain=default",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/banks/providers/smbc",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "mizuho-bank-app-access-sign-up-problems-standard-japanese",
+      "name": "Mizuho Bank",
+      "kind": "bank",
+      "department": "App access / sign-up problems · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81332119324",
+        "display": "+81 3 3211 9324"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.mizuhobank.co.jp/help/direct/index.html",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/banks/providers/mizuho-bank",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "smbc-trust-bank-prestia-everyday-banking-standard-japanese",
+      "name": "SMBC Trust Bank PRESTIA",
+      "kind": "bank",
+      "department": "Everyday banking · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81464012100",
+        "display": "+81 46 401 2100"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.smbctb.co.jp/en/contacts/",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/banks/providers/smbc-trust-bank-prestia",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "sbi-shinsei-bank-everyday-banking-japanese-standard-japanese",
+      "name": "SBI Shinsei Bank",
+      "kind": "bank",
+      "department": "Everyday banking · Japanese · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81676354671",
+        "display": "+81 6 7635 4671"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://faq.sbishinseibank.co.jp/faq_detail.html?id=817&page=500",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/banks/providers/sbi-shinsei-bank",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "rakuten-bank-app-access-sign-up-problems-standard-japanese",
+      "name": "Rakuten Bank",
+      "kind": "bank",
+      "department": "App access / sign-up problems · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81368322280",
+        "display": "+81 3 6832 2280"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.rakuten-bank.co.jp/support/contact/howto/password.html",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/banks/providers/rakuten-bank",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "seven-bank-everyday-banking-english-standard-japanese-number",
+      "name": "Seven Bank",
+      "kind": "bank",
+      "department": "Everyday banking · English · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81356107730",
+        "display": "+81 3 5610 7730"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://faqsearch.en.sevenbank.co.jp/answer/68c0247e700e23540e35dd80/",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/banks/providers/seven-bank",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "sony-bank-credit-cards-standard-japanese-number",
+      "name": "Sony Bank",
+      "kind": "bank",
+      "department": "Credit cards · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81367302700",
+        "display": "+81 3 6730 2700"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://sonybank.jp/inquiry/cs/02.html",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/banks/providers/sony-bank",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "sony-bank-lost-or-stolen-cards-standard-japanese-number",
+      "name": "Sony Bank",
+      "kind": "bank",
+      "department": "Lost or stolen cards · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81367311340",
+        "display": "+81 3 6731 1340"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://sonybank.jp/inquiry/cs/02.html",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/banks/providers/sony-bank",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "resona-bank-credit-cards-standard-japanese-number",
+      "name": "Resona Bank",
+      "kind": "bank",
+      "department": "Credit cards · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81366734535",
+        "display": "+81 3 6673 4535"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.resonabank.co.jp/kojin/faq/tetsuduki/faq_tetsuduki_0006.html",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/banks/providers/resona-bank",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "aflac-japan-claims-standard-japanese-number",
+      "name": "Aflac Japan",
+      "kind": "insurance",
+      "department": "Claims · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81424413131",
+        "display": "+81 42 441 3131"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.aflac.co.jp/inquiry/",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/insurance/providers/aflac-japan",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "aflac-japan-customer-service-standard-japanese-number",
+      "name": "Aflac Japan",
+      "kind": "insurance",
+      "department": "Customer service · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81424413241",
+        "display": "+81 42 441 3241"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.aflac.co.jp/inquiry/",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/insurance/providers/aflac-japan",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "sompo-himawari-life-insurance-private-health-plan-support",
+      "name": "SOMPO Himawari Life Insurance",
+      "kind": "insurance",
+      "department": "Private health plan support · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81367412071",
+        "display": "+81 3 6741 2071"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://faq.himawari-life.co.jp/%E6%B5%B7%E5%A4%96%E3%81%8B%E3%82%89%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B%E3%82%84%E6%89%8B%E7%B6%9A%E3%81%8D%E3%82%92%E3%81%97%E3%81%9F%E3%81%84%E5%A0%B4%E5%90%88%E3%81%AE%E9%80%A3%E7%B5%A1%E5%85%88-63904b144e5e90001f2f637e",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/insurance/providers/sompo-himawari-life",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "orix-life-insurance-customer-service-standard-japanese",
+      "name": "ORIX Life Insurance",
+      "kind": "insurance",
+      "department": "Customer service · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81368379098",
+        "display": "+81 3 6837 9098"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.orixlife.co.jp/customer/scene/pdf/gd_4_trvlng_abd.pdf",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/insurance/providers/orix-life",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "nippon-life-nissay-individual-life-insurance-standard",
+      "name": "Nippon Life (Nissay)",
+      "kind": "insurance",
+      "department": "Individual life insurance · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81676355776",
+        "display": "+81 6 7635 5776"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.nissay.co.jp/keiyaku/tetsuzuki/sonohoka/lifeevent/kaigai/otoiawasesaki.html",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/insurance/providers/nippon-life",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "dai-ichi-life-individual-life-insurance-standard-japanese",
+      "name": "Dai-ichi Life",
+      "kind": "insurance",
+      "department": "Individual life insurance · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81356856300",
+        "display": "+81 3 5685 6300"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.dai-ichi-life.co.jp/support/contact/office/telephone/index.html",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/insurance/providers/dai-ichi-life",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "metlife-japan-individual-life-insurance-standard-japanese",
+      "name": "MetLife Japan",
+      "kind": "insurance",
+      "department": "Individual life insurance · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81368722427",
+        "display": "+81 3 6872 2427"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://faq.metlife.co.jp/answer/685123f21788f2c5d3830a96/",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/insurance/providers/metlife-japan",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "japan-post-insurance-kampo-individual-life-insurance",
+      "name": "Japan Post Insurance (Kampo)",
+      "kind": "insurance",
+      "department": "Individual life insurance · Japanese · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81364556315",
+        "display": "+81 3 6455 6315"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.jp-life.japanpost.jp/customer/procedure/assets/pdf/kaigaitokou_tebiki.pdf",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/insurance/providers/japan-post-insurance",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "sompo-japan-travel-insurance-assistance-standard-japanese",
+      "name": "Sompo Japan",
+      "kind": "insurance",
+      "department": "Travel insurance assistance · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81188889547",
+        "display": "+81 18 888 9547"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.sompo-japan.co.jp/covenanter/acontact/travel/",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/insurance/providers/sompo-japan",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "japan-airlines-jal-flight-reservations-english-standard",
+      "name": "Japan Airlines (JAL)",
+      "kind": "airline",
+      "department": "Flight reservations · English · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81367333062",
+        "display": "+81 3 6733 3062"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.jal.co.jp/jp/en/information/inter/",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/airlines/providers/japan-airlines",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "all-nippon-airways-ana-flight-reservations-standard-japanese",
+      "name": "All Nippon Airways (ANA)",
+      "kind": "airline",
+      "department": "Flight reservations · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81367416685",
+        "display": "+81 3 6741 6685"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.ana.co.jp/ja/jp/guide/contact/international/international_top/",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/airlines/providers/ana",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "peach-aviation-customer-relations-and-complaints-standard",
+      "name": "Peach Aviation",
+      "kind": "airline",
+      "department": "Customer relations and complaints · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81366291627",
+        "display": "+81 3 6629 1627"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://cs.flypeach.com/hc/en-us/articles/4690863246110-Enquiries-by-phone",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/airlines/providers/peach-aviation",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "jetstar-japan-flight-reservations-standard-japanese-number",
+      "name": "Jetstar Japan",
+      "kind": "airline",
+      "department": "Flight reservations · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+815031638538",
+        "display": "+81 50 3163 8538"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.jetstar.com/jp/en/help/contact-numbers",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/airlines/providers/jetstar-japan",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "skymark-airlines-flight-reservations-standard-japanese",
+      "name": "Skymark Airlines",
+      "kind": "airline",
+      "department": "Flight reservations · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+815037860283",
+        "display": "+81 50 3786 0283"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.skymark.co.jp/en/contact/",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/airlines/providers/skymark-airlines",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "airdo-flight-reservations-standard-japanese-number",
+      "name": "AIRDO",
+      "kind": "airline",
+      "department": "Flight reservations · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81367411122",
+        "display": "+81 3 6741 1122"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.airdo.jp/en/support/",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/airlines/providers/airdo",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "airdo-flight-reservations-standard-japanese-number-2",
+      "name": "AIRDO",
+      "kind": "airline",
+      "department": "Flight reservations · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81117071122",
+        "display": "+81 11 707 1122"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.airdo.jp/en/support/",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/airlines/providers/airdo",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "solaseed-air-flight-reservations-standard-japanese-number",
+      "name": "Solaseed Air",
+      "kind": "airline",
+      "department": "Flight reservations · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81676378817",
+        "display": "+81 6 7637 8817"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.solaseedair.jp/en/contact/?accordion=contact-center-details",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/airlines/providers/solaseed-air",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "zipair-accessibility-assistance-passengers-needing",
+      "name": "ZIPAIR",
+      "kind": "airline",
+      "department": "Accessibility assistance · Passengers needing assistance or travelling with children only · Japanese · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81366311223",
+        "display": "+81 3 6631 1223"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.zipair.net/ja/boarding/support",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/airlines/providers/zipair",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "star-flyer-flight-reservations-standard-japanese-number",
+      "name": "Star Flyer",
+      "kind": "airline",
+      "department": "Flight reservations · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81935127320",
+        "display": "+81 93 512 7320"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.starflyer.jp/en/inquiry/",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/airlines/providers/starflyer",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "apa-hotel-higashi-shinjuku-kabukicho-tower-hotel",
+      "name": "APA Hotel Higashi Shinjuku Kabukicho Tower",
+      "kind": "hotel",
+      "department": "Hotel reservations and support · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81352919311",
+        "display": "+81 3 5291 9311"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www3.apahotel.com/en/hotel/syutoken/tokyo/higashishinjuku-kabukichotower/",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/hotels/providers/apa-hotel-higashi-shinjuku-kabukicho-tower",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "toyoko-inn-tokyo-shinagawa-oimachi-hotel-reservations-and",
+      "name": "Toyoko Inn Tokyo Shinagawa Oimachi",
+      "kind": "hotel",
+      "department": "Hotel reservations and support · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81337711045",
+        "display": "+81 3 3771 1045"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.toyoko-inn.com/eng/search/detail/00146/",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/hotels/providers/toyoko-inn-tokyo-shinagawa-oimachi",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "okinawa-prince-hotel-ocean-view-ginowan-hotel-reservations",
+      "name": "Okinawa Prince Hotel Ocean View Ginowan",
+      "kind": "hotel",
+      "department": "Hotel reservations · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81988981110",
+        "display": "+81 98 898 1110"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.princehotels.com/ginowan/faq5-accommodations/",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/hotels/providers/okinawa-prince-hotel",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "hoshino-resorts-risonare-atami-hotel-reservations-standard",
+      "name": "Hoshino Resorts RISONARE Atami",
+      "kind": "hotel",
+      "department": "Hotel reservations · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+815031348093",
+        "display": "+81 50 3134 8093"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://hoshinoresorts.com/en/hotels/risonareatami/sp/contact/",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/hotels/providers/risonare-atami",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "the-okura-tokyo-hotel-reservations-and-support-standard",
+      "name": "The Okura Tokyo",
+      "kind": "hotel",
+      "department": "Hotel reservations and support · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81335820111",
+        "display": "+81 3 3582 0111"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://theokuratokyo.jp/en/contact-us/",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/hotels/providers/the-okura-tokyo",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "imperial-hotel-tokyo-hotel-reservations-standard-japanese",
+      "name": "Imperial Hotel, Tokyo",
+      "kind": "hotel",
+      "department": "Hotel reservations · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81335041251",
+        "display": "+81 3 3504 1251"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.imperialhotel.co.jp/en/tokyo/overview",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/hotels/providers/imperial-hotel-tokyo",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "imperial-hotel-tokyo-hotel-reservations-and-support-standard",
+      "name": "Imperial Hotel, Tokyo",
+      "kind": "hotel",
+      "department": "Hotel reservations and support · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81335041111",
+        "display": "+81 3 3504 1111"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.imperialhotel.co.jp/en/tokyo/overview",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/hotels/providers/imperial-hotel-tokyo",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "hotel-gracery-shinjuku-hotel-reservations-and-support",
+      "name": "Hotel Gracery Shinjuku",
+      "kind": "hotel",
+      "department": "Hotel reservations and support · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81368331111",
+        "display": "+81 3 6833 1111"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://en.gracery.com/shinjuku/",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/hotels/providers/hotel-gracery-shinjuku",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "cerulean-tower-tokyu-hotel-hotel-reservations-and-support",
+      "name": "Cerulean Tower Tokyu Hotel",
+      "kind": "hotel",
+      "department": "Hotel reservations and support · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81334763000",
+        "display": "+81 3 3476 3000"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.tokyuhotels.co.jp/en/cerulean-h/contact/index.html",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/hotels/providers/cerulean-tower-tokyu-hotel",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "hotel-granvia-kyoto-hotel-reservations-standard-japanese",
+      "name": "Hotel Granvia Kyoto",
+      "kind": "hotel",
+      "department": "Hotel reservations · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81753444433",
+        "display": "+81 75 344 4433"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.granviakyoto.com/factsheet/",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/hotels/providers/hotel-granvia-kyoto",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "hotel-granvia-kyoto-hotel-reservations-and-support-standard",
+      "name": "Hotel Granvia Kyoto",
+      "kind": "hotel",
+      "department": "Hotel reservations and support · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81753448888",
+        "display": "+81 75 344 8888"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.granviakyoto.com/factsheet/",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/hotels/providers/hotel-granvia-kyoto",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "toyota-rent-a-car-car-rental-reservations-english-standard",
+      "name": "Toyota Rent a Car",
+      "kind": "car-rental",
+      "department": "Car rental reservations · English · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81925770091",
+        "display": "+81 92 577 0091"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://rent.toyota.co.jp/static/inquiry/",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/car-rentals/providers/toyota-rent-a-car",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "nippon-rent-a-car-narita-airport-reservations-rental-and",
+      "name": "Nippon Rent-A-Car Narita Airport",
+      "kind": "car-rental",
+      "department": "Reservations, rental and roadside support · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+815017122770",
+        "display": "+81 50 1712 2770"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://store.nipponrentacar.co.jp/en/b/nrs/info/560379/?multilang=1",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/car-rentals/providers/nippon-rent-a-car-narita",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "nissan-rent-a-car-car-rental-reservations-standard-japanese",
+      "name": "Nissan Rent a Car",
+      "kind": "car-rental",
+      "department": "Car rental reservations · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81988708196",
+        "display": "+81 98 870 8196"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://faq2.nissan.co.jp/faq/show/11503?category_id=13&site_domain=default",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/car-rentals/providers/nissan-rent-a-car",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "orix-rent-a-car-narita-airport-reservations-rental-and",
+      "name": "ORIX Rent a Car Narita Airport",
+      "kind": "car-rental",
+      "department": "Reservations, rental and roadside support · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81476945701",
+        "display": "+81 476 94 5701"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://car.orix.co.jp/eng/shops_map/?md=view&shops_pk=224",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/car-rentals/providers/orix-rent-a-car-narita",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "times-car-rental-after-rental-customer-service-standard",
+      "name": "Times Car Rental",
+      "kind": "car-rental",
+      "department": "After-rental customer service · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+815037860056",
+        "display": "+81 50 3786 0056"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.timescar-rental.com/en/help/",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/car-rentals/providers/times-car-rental",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "budget-rent-a-car-narita-airport-reservations-rental-and",
+      "name": "Budget Rent a Car Narita Airport",
+      "kind": "car-rental",
+      "department": "Reservations, rental and roadside support · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81476355300",
+        "display": "+81 476 35 5300"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.budgetrentacar.co.jp/en/shop/chiba/0232/",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/car-rentals/providers/budget-rent-a-car-narita",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "budget-rent-a-car-narita-airport-car-rental-reservations",
+      "name": "Budget Rent a Car Narita Airport",
+      "kind": "car-rental",
+      "department": "Car rental reservations · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81927358886",
+        "display": "+81 92 735 8886"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.budgetrentacar.co.jp/en/shop/chiba/0232/",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/car-rentals/providers/budget-rent-a-car-narita",
+        "reachGuide": null
+      }
+    },
+    {
+      "id": "jr-rent-a-car-tokyo-station-reservations-rental-and-roadside",
+      "name": "JR Rent-A-Car Tokyo Station",
+      "kind": "car-rental",
+      "department": "Reservations, rental and roadside support · Standard Japanese number",
+      "country": "JP",
+      "status": "listed",
+      "phone": {
+        "e164": "+81362756065",
+        "display": "+81 3 6275 6065"
+      },
+      "otherNumbers": [],
+      "hours": null,
+      "officialTip": null,
+      "source": {
+        "url": "https://www.ekiren.co.jp/global/en/office/list/kanto",
+        "checkedOn": "2026-11-27",
+        "type": "number-page"
+      },
+      "reachableFromAbroad": null,
+      "lastTestCall": null,
+      "route": null,
+      "waitOnHold": null,
+      "callLength": null,
+      "lastTestedOn": null,
+      "lastChangedOn": "2026-11-27",
+      "links": {
+        "guide": "https://pay-call.com/directory/jp/car-rentals/providers/jr-rent-a-car-tokyo-station",
         "reachGuide": null
       }
     }
