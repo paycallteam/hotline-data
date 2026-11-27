@@ -1,9 +1,11 @@
 {
   "title": "PayCall Hotline Data",
   "upload_type": "dataset",
-  "description": "Official customer-service and government hotline numbers in the U.S., Canada, the UK and Australia, each with the organisation's own source URL and check date; whether the line answered calls through PayCall from abroad; phone-menu routes tested with real calls; and hold times measured on real calls (range and median). Method: https://pay-call.com/hotline-data. Live API: https://pay-call.com/hotlines.json",
+  "description": "Official customer-service and government hotline numbers in the U.S., Canada, the UK, Australia, Germany, Mexico, France, Ireland and more, each with the organisation's own source URL and check date; whether the line answered calls through PayCall from abroad; what each line says first, recorded by PayCall's test robot; phone-menu routes to a person tested with real calls; and hold times measured on real calls (range and median). Method: https://pay-call.com/hotline-data. Live API: https://pay-call.com/hotlines.json. JSON Schema: https://pay-call.com/hotlines.schema.json",
   "creators": [
-    { "name": "PayCall, Inc." }
+    {
+      "name": "PayCall, Inc."
+    }
   ],
   "license": "cc-by-4.0",
   "access_right": "open",
@@ -14,11 +16,27 @@
     "IVR",
     "hold times",
     "call center",
-    "open data"
+    "open data",
+    "opening hours",
+    "phone menu",
+    "test calls"
   ],
   "related_identifiers": [
-    { "identifier": "https://pay-call.com/hotline-data", "relation": "isDocumentedBy", "resource_type": "other" },
-    { "identifier": "https://pay-call.com/hotlines.json", "relation": "isDerivedFrom", "resource_type": "dataset" }
+    {
+      "identifier": "https://pay-call.com/hotline-data",
+      "relation": "isDocumentedBy",
+      "resource_type": "other"
+    },
+    {
+      "identifier": "https://pay-call.com/hotlines.json",
+      "relation": "isDerivedFrom",
+      "resource_type": "dataset"
+    },
+    {
+      "identifier": "https://pay-call.com/hotlines.schema.json",
+      "relation": "isDescribedBy",
+      "resource_type": "other"
+    }
   ],
   "language": "eng"
 }
