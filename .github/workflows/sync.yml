@@ -26,6 +26,8 @@ jobs:
           jq 'del(.generatedAt)' /tmp/raw.json > data/hotlines.json
           # The CSV comes straight from the site, so its columns always match /hotlines.csv.
           curl -fsSL --retry 3 https://pay-call.com/hotlines.csv -o data/hotlines.csv
+          # The schema of every field, so the copy here documents itself.
+          curl -fsSL --retry 3 https://pay-call.com/hotlines.schema.json -o data/hotlines.schema.json
 
       - name: Commit if changed
         run: |
