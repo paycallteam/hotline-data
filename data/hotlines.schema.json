@@ -1,0 +1,573 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pay-call.com/hotlines.schema.json",
+  "title": "PayCall hotline data, version 7",
+  "description": "Shape of https://pay-call.com/hotlines.json. Texts follow ?lang= (en, de, fr, es, it, pt, nl, pl, ja, zh, ar). CC BY 4.0.",
+  "type": "object",
+  "required": [
+    "name",
+    "version",
+    "generatedAt",
+    "license",
+    "hotlines"
+  ],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "version": {
+      "const": 7
+    },
+    "schema": {
+      "type": "string",
+      "format": "uri"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastChangedOn": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "date"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "language": {
+      "enum": [
+        "en",
+        "de",
+        "fr",
+        "es",
+        "it",
+        "pt",
+        "nl",
+        "pl",
+        "ja",
+        "zh",
+        "ar"
+      ]
+    },
+    "hotlines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/hotline"
+      }
+    }
+  },
+  "$defs": {
+    "hotline": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "kind",
+        "country",
+        "status",
+        "phone",
+        "source",
+        "lastChangedOn",
+        "links"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Stable identifier; use it with ?id=."
+        },
+        "name": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "government",
+            "bank",
+            "finance",
+            "insurance",
+            "airline",
+            "hotel",
+            "car-rental",
+            "telecom",
+            "tech",
+            "shipping",
+            "other"
+          ]
+        },
+        "department": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "country": {
+          "type": "string",
+          "pattern": "^[A-Z]{2}$",
+          "description": "ISO 3166-1 alpha-2"
+        },
+        "status": {
+          "enum": [
+            "tested",
+            "checked",
+            "listed"
+          ],
+          "description": "tested: route on record; checked: test robot recorded the first announcement; listed: official source only."
+        },
+        "phone": {
+          "type": "object",
+          "required": [
+            "e164",
+            "display"
+          ],
+          "properties": {
+            "e164": {
+              "type": "string",
+              "pattern": "^\\+[1-9]\\d{6,14}$"
+            },
+            "display": {
+              "type": "string"
+            }
+          }
+        },
+        "otherNumbers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "e164",
+              "display"
+            ],
+            "properties": {
+              "e164": {
+                "type": "string"
+              },
+              "display": {
+                "type": "string"
+              },
+              "label": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "hours": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "schedule": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "required": [
+                        "timeZone",
+                        "days",
+                        "opens",
+                        "closes"
+                      ],
+                      "properties": {
+                        "timeZone": {
+                          "type": "string",
+                          "description": "IANA time zone"
+                        },
+                        "days": {
+                          "type": "array",
+                          "items": {
+                            "enum": [
+                              "mon",
+                              "tue",
+                              "wed",
+                              "thu",
+                              "fri",
+                              "sat",
+                              "sun"
+                            ]
+                          }
+                        },
+                        "opens": {
+                          "type": "string",
+                          "pattern": "^\\d{2}:\\d{2}$"
+                        },
+                        "closes": {
+                          "type": "string",
+                          "pattern": "^\\d{2}:\\d{2}$",
+                          "description": "24:00 = midnight"
+                        }
+                      }
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "officialTip": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source": {
+          "type": "object",
+          "required": [
+            "url",
+            "checkedOn",
+            "type"
+          ],
+          "properties": {
+            "url": {
+              "type": "string",
+              "format": "uri"
+            },
+            "checkedOn": {
+              "type": "string",
+              "format": "date"
+            },
+            "type": {
+              "enum": [
+                "number-page",
+                "website"
+              ]
+            }
+          }
+        },
+        "reachableFromAbroad": {
+          "anyOf": [
+            {
+              "type": "object",
+              "required": [
+                "lastConfirmedOn"
+              ],
+              "properties": {
+                "lastConfirmedOn": {
+                  "type": "string",
+                  "format": "date"
+                }
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "lastTestCall": {
+          "anyOf": [
+            {
+              "type": "object",
+              "required": [
+                "testedAt",
+                "number",
+                "heard"
+              ],
+              "properties": {
+                "testedAt": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "number": {
+                  "type": "string"
+                },
+                "heard": {
+                  "enum": [
+                    "menu",
+                    "private",
+                    "queue",
+                    "closed",
+                    "message",
+                    "person",
+                    "moved"
+                  ]
+                },
+                "firstAnnouncement": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "options": {
+                  "type": "array"
+                },
+                "asksFirstFor": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "voiceAssistant": {
+                  "type": "boolean"
+                },
+                "language": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "route": {
+          "anyOf": [
+            {
+              "type": "object",
+              "required": [
+                "method",
+                "result",
+                "confirmedOn",
+                "steps"
+              ],
+              "properties": {
+                "method": {
+                  "enum": [
+                    "robot",
+                    "manual"
+                  ]
+                },
+                "result": {
+                  "enum": [
+                    "queue",
+                    "person",
+                    "private",
+                    "closed"
+                  ]
+                },
+                "confirmedOn": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "format": "date"
+                  }
+                },
+                "needsAccountData": {
+                  "type": "boolean"
+                },
+                "wayOut": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "secondsToPerson": {
+                  "anyOf": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "triedWithoutSuccess": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "steps": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "action"
+                    ],
+                    "properties": {
+                      "action": {
+                        "enum": [
+                          "press",
+                          "say",
+                          "wait"
+                        ]
+                      },
+                      "key": {
+                        "type": "string"
+                      },
+                      "phrase": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "description": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "waitOnHold": {
+          "anyOf": [
+            {
+              "type": "object",
+              "required": [
+                "lowMinutes",
+                "highMinutes",
+                "medianMinutes",
+                "method"
+              ],
+              "properties": {
+                "lowMinutes": {
+                  "type": "number"
+                },
+                "highMinutes": {
+                  "type": "number"
+                },
+                "medianMinutes": {
+                  "anyOf": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "method": {
+                  "enum": [
+                    "measured",
+                    "estimate"
+                  ]
+                },
+                "setOn": {
+                  "type": "string",
+                  "format": "date"
+                }
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "callLength": {
+          "anyOf": [
+            {
+              "type": "object",
+              "required": [
+                "lowMinutes",
+                "highMinutes",
+                "medianMinutes",
+                "method"
+              ],
+              "properties": {
+                "lowMinutes": {
+                  "type": "number"
+                },
+                "highMinutes": {
+                  "type": "number"
+                },
+                "medianMinutes": {
+                  "anyOf": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "method": {
+                  "enum": [
+                    "measured",
+                    "estimate"
+                  ]
+                },
+                "setOn": {
+                  "type": "string",
+                  "format": "date"
+                }
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "lastTestedOn": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "lastChangedOn": {
+          "type": "string",
+          "format": "date"
+        },
+        "links": {
+          "type": "object",
+          "properties": {
+            "guide": {
+              "type": "string",
+              "format": "uri"
+            },
+            "reachGuide": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uri"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
