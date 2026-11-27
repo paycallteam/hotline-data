@@ -38,6 +38,23 @@ JSON Schema of every field: https://pay-call.com/hotlines.schema.json (version 7
 
 Human-readable page with method and license: https://pay-call.com/hotline-data
 
+## MCP server
+
+The same data as tools for AI assistants and agents ([Model Context Protocol](https://modelcontextprotocol.io), Streamable HTTP, no key, read-only):
+
+```
+https://pay-call.com/mcp
+```
+
+Add it as a remote MCP server or connector in your AI client. Tools:
+
+| Tool | What it answers |
+| --- | --- |
+| `search_hotlines` | Find a hotline by organisation name or phone number, with country, kind and status filters |
+| `get_hotline` | The full record of one hotline |
+| `hotline_open_now` | Open right now by the published hours? Local time there and when it next opens or closes |
+| `reach_a_person` | The tested way through the phone menu to a person, the first announcement, hold time and whether calls from abroad connected |
+
 ## Fields
 
 | Field | Meaning |
@@ -48,7 +65,7 @@ Human-readable page with method and license: https://pay-call.com/hotline-data
 | `source.url`, `source.checkedOn`, `source.type` | Where the number comes from, when PayCall checked it, and whether it is an official number page or the organisation's website |
 | `reachableFromAbroad.lastConfirmedOn` | Last day a call through PayCall (used from abroad) connected; `null` until then. Many toll-free numbers can't be dialled from a foreign phone. |
 | `lastTestCall` | The test robot's newest call: `testedAt`, `heard` (`menu`, `private`, `queue`, `closed`, `message`), `firstAnnouncement` (summary, not a recording), `options`, `asksFirstFor`, `voiceAssistant`, `language` |
-| `route` | The way through the phone menu: `method` (`robot` or `manual`), `result` (`queue`, `person`, `private`, `closed`), `steps`, `wayOut`, `triedWithoutSuccess`, `secondsToPerson`, `confirmedOn` (robot routes are published after two equal tests) |
+| `route` | The way through the phone menu: `method` (`robot` or `manual`), `result` (`queue`, `person`, `private`, `closed`), `steps`, `wayOut`, `triedWithoutSuccess`, `secondsToPerson`, `confirmedOn` (days of the equal tests, each day once), `equalTests` (how many tests in a row found the route; robot routes are published from two) |
 | `waitOnHold`, `callLength` | Minutes (`lowMinutes`, `highMinutes`, `medianMinutes`) with `method` (`measured` or `estimate`); `null` until known |
 | `lastTestedOn`, `lastChangedOn` | Date of the newest test call, and the newest date anything in the record was checked or changed |
 
