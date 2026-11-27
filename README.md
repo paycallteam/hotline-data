@@ -44,7 +44,7 @@ Human-readable page with method and license: https://pay-call.com/hotline-data
 | --- | --- |
 | `status` | `tested`: a phone-menu route (to a person, or a tested dead end) is on record. `checked`: PayCall's test robot called the line and recorded what it says first. `listed`: number from the organisation's own source only. |
 | `phone.e164`, `otherNumbers` | Number in international format, plus further numbers of the same organisation |
-| `hours.text`, `hours.schedule` | Hours in the organisation's words, and in machine form: `timeZone` (IANA), `days` (`mon`…`sun`), `opens`, `closes` (local 24-hour time) |
+| `hours.text`, `hours.schedule` | Hours in the organisation's words, and in machine form: `timeZone` (IANA) and `periods`, each with `days` (`mon`…`sun`), `opens`, `closes` (local 24-hour time, `24:00` = midnight). `null` where the text is not clear enough, for example "local time" on a line that serves several time zones. Holidays stay in the text. |
 | `source.url`, `source.checkedOn`, `source.type` | Where the number comes from, when PayCall checked it, and whether it is an official number page or the organisation's website |
 | `reachableFromAbroad.lastConfirmedOn` | Last day a call through PayCall (used from abroad) connected; `null` until then. Many toll-free numbers can't be dialled from a foreign phone. |
 | `lastTestCall` | The test robot's newest call: `testedAt`, `heard` (`menu`, `private`, `queue`, `closed`, `message`), `firstAnnouncement` (summary, not a recording), `options`, `asksFirstFor`, `voiceAssistant`, `language` |
