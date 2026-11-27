@@ -1,13 +1,14 @@
 # PayCall hotline data
 
-Open data on customer-service and government hotlines in the **U.S., Canada, the UK, Australia and Germany**:
+Open data on customer-service and government hotlines in the **U.S., Canada, the UK, Australia, Germany, Mexico, France, Ireland** and more countries as they are added (the data lists all):
 
-- **Official numbers and hours**, each with the organisation's own source URL and the date PayCall checked it
+- **Official numbers and hours**, each with the organisation's own source URL and the date PayCall checked it; hours also in machine form (time zone, days, opening and closing time) where known
 - **Reachable from abroad**: whether calls through PayCall from abroad got through, with the last date. Many toll-free numbers can't be dialled from a foreign phone.
-- **Phone-menu routes tested with real calls**: which keys to press or what to say, what the menu said, and where the call ended
+- **What each line says first**: PayCall's test robot calls the hotlines in turn and records the first announcement (a summary, not a recording)
+- **Phone-menu routes tested with real calls**: which keys to press or what to say to reach a person, or that there is no way without account data; published after two equal tests
 - **Measured hold times**: wait until a person, as a range and median from real PayCall calls
 
-Published by [PayCall](https://pay-call.com), a service for calling U.S., Canadian, UK, Australian and German numbers from abroad in the browser.
+Published by [PayCall](https://pay-call.com), a service for calling numbers in these countries from abroad in the browser: family and friends as well as banks and hotlines.
 
 ## Files
 
@@ -15,6 +16,7 @@ Published by [PayCall](https://pay-call.com), a service for calling U.S., Canadi
 | --- | --- |
 | [`data/hotlines.json`](data/hotlines.json) | Full data set, same as the live API |
 | [`data/hotlines.csv`](data/hotlines.csv) | One row per hotline, main fields only, for spreadsheets |
+| [`data/hotlines.schema.json`](data/hotlines.schema.json) | JSON Schema of every field (version 7) |
 
 A GitHub Action copies the data from the live API once a day. A commit only happens when something changed.
 
@@ -27,9 +29,12 @@ https://pay-call.com/hotlines.json
 https://pay-call.com/hotlines.json?number=+18008291040   # any number format
 https://pay-call.com/hotlines.json?id=irs
 https://pay-call.com/hotlines.json?country=gb&kind=bank&status=tested
+https://pay-call.com/hotlines.json?lang=es                # texts in 11 languages
 ```
 
-`country`: `us`, `ca`, `gb`, `au`, `de`. `status`: `tested` or `listed`. `abroad=confirmed`: only hotlines reached from abroad. The JSON lists every allowed `kind`.
+`country`: ISO code, for example `us`, `ca`, `gb`, `au`, `de`, `mx`, `fr`, `ie` (the JSON lists all). `status`: `tested`, `checked` or `listed`. `abroad=confirmed`: only hotlines reached from abroad. `lang`: texts in `en`, `de`, `fr`, `es`, `it`, `pt`, `nl`, `pl`, `ja`, `zh` or `ar` (English where a translation is missing). The JSON lists every allowed `kind`.
+
+JSON Schema of every field: https://pay-call.com/hotlines.schema.json (version 7)
 
 Human-readable page with method and license: https://pay-call.com/hotline-data
 
@@ -37,14 +42,15 @@ Human-readable page with method and license: https://pay-call.com/hotline-data
 
 | Field | Meaning |
 | --- | --- |
-| `reachableFromAbroad` | `confirmed` with `lastConfirmedOn` once a call through PayCall (used from abroad) connected and the network hasn't refused the number since; `null` until then. Many toll-free numbers can't be dialled from a foreign phone. |
-| `status` | `tested`: PayCall called the line and wrote down the menu route. `listed`: number from the organisation's own page, not tested yet. |
-| `phone.e164` | Number in international format |
-| `hours` | Opening hours as published by the organisation |
-| `source.url`, `source.checkedOn` | Where the number comes from and when PayCall checked it |
-| `menuRoute` | Tested phone-menu route with `testedOn`; `null` until tested. Menus change, so check the date. |
-| `waitOnHold` | Time on hold in minutes (`lowMinutes`, `highMinutes`, `medianMinutes`); `null` until measured |
-| `callLength` | Typical whole call, waiting and talking, same rules |
+| `status` | `tested`: a phone-menu route (to a person, or a tested dead end) is on record. `checked`: PayCall's test robot called the line and recorded what it says first. `listed`: number from the organisation's own source only. |
+| `phone.e164`, `otherNumbers` | Number in international format, plus further numbers of the same organisation |
+| `hours.text`, `hours.schedule` | Hours in the organisation's words, and in machine form: `timeZone` (IANA), `days` (`mon`…`sun`), `opens`, `closes` (local 24-hour time) |
+| `source.url`, `source.checkedOn`, `source.type` | Where the number comes from, when PayCall checked it, and whether it is an official number page or the organisation's website |
+| `reachableFromAbroad.lastConfirmedOn` | Last day a call through PayCall (used from abroad) connected; `null` until then. Many toll-free numbers can't be dialled from a foreign phone. |
+| `lastTestCall` | The test robot's newest call: `testedAt`, `heard` (`menu`, `private`, `queue`, `closed`, `message`), `firstAnnouncement` (summary, not a recording), `options`, `asksFirstFor`, `voiceAssistant`, `language` |
+| `route` | The way through the phone menu: `method` (`robot` or `manual`), `result` (`queue`, `person`, `private`, `closed`), `steps`, `wayOut`, `triedWithoutSuccess`, `secondsToPerson`, `confirmedOn` (robot routes are published after two equal tests) |
+| `waitOnHold`, `callLength` | Minutes (`lowMinutes`, `highMinutes`, `medianMinutes`) with `method` (`measured` or `estimate`); `null` until known |
+| `lastTestedOn`, `lastChangedOn` | Date of the newest test call, and the newest date anything in the record was checked or changed |
 
 ### How hold times are measured
 
