@@ -7,7 +7,7 @@
     "name": "PayCall, Inc.",
     "url": "https://pay-call.com"
   },
-  "lastChangedOn": "2026-11-27",
+  "lastChangedOn": "2026-11-28",
   "language": "en",
   "license": {
     "name": "CC BY 4.0",
@@ -20,6 +20,7 @@
     "byNumber": "https://pay-call.com/hotlines.json?number=+18008291040 (any format; main or other numbers of a hotline)",
     "byId": "https://pay-call.com/hotlines.json?id=irs",
     "filters": "https://pay-call.com/hotlines.json?country=gb&kind=bank&status=tested (country: au, ca, de, fr, gb, ie, in, jp, mx, us; kind: government, bank, finance, insurance, airline, hotel, car-rental, telecom, tech, shipping, other; status: tested, checked or listed; abroad=confirmed: only hotlines reached from abroad)",
+    "mcp": "https://pay-call.com/mcp (MCP server, Streamable HTTP, no key: tools search_hotlines, get_hotline, hotline_open_now, reach_a_person)",
     "language": "https://pay-call.com/hotlines.json?lang=es (texts in en, de, fr, es, it, pt, nl, pl, ja, zh, ar; English where a translation is missing)"
   },
   "methods": {
@@ -34,7 +35,7 @@
     "status": "tested: a phone-menu route (to a person, or a tested dead end) is on record; checked: the test robot called the line and recorded what it says first; listed: taken from the organisation's own source only.",
     "hours": "text: the organisation's own wording; schedule: { timeZone (IANA), periods: [{ days (mon…sun), opens, closes (local 24-hour time, 24:00 = midnight) }] } where the text is unambiguous, else null (for example \"local time\" on a line that serves several time zones). Holidays stay in the text.",
     "lastTestCall": "testedAt (UTC), number, heard (menu, private, queue, closed or message), firstAnnouncement, options (keys heard), asksFirstFor (data asked for first), voiceAssistant, language. null until a test call reached the line.",
-    "route": "result: queue (hold queue for an agent), person, private (no way to a person without account or ID data) or closed; steps: the keys pressed and words said from the start; wayOut: words the line offers instead of account data that worked; triedWithoutSuccess: data-free ways out that did not help; secondsToPerson; confirmedOn (newest first). null until tested.",
+    "route": "result: queue (hold queue for an agent), person, private (no way to a person without account or ID data) or closed; steps: the keys pressed and words said from the start; wayOut: words the line offers instead of account data that worked; triedWithoutSuccess: data-free ways out that did not help; secondsToPerson; confirmedOn (days of the equal tests, newest first, each day once); equalTests (how many tests in a row found this route). null until tested.",
     "waitOnHold": "lowMinutes, highMinutes, medianMinutes, method (measured or estimate); null until measured.",
     "callLength": "Same shape and rules as waitOnHold, for the whole call.",
     "lastTestedOn": "Date of the newest test call that reached the line.",
@@ -191,6 +192,7 @@
         "confirmedOn": [
           "2026-11-25"
         ],
+        "equalTests": 2,
         "needsAccountData": true,
         "wayOut": [],
         "secondsToPerson": null,
@@ -308,6 +310,7 @@
           "2026-11-27",
           "2026-11-24"
         ],
+        "equalTests": 2,
         "needsAccountData": true,
         "wayOut": [],
         "secondsToPerson": null,
@@ -401,6 +404,7 @@
         "confirmedOn": [
           "2026-11-24"
         ],
+        "equalTests": 2,
         "needsAccountData": false,
         "wayOut": [
           "I don't have it",
@@ -624,6 +628,7 @@
         "confirmedOn": [
           "2026-11-25"
         ],
+        "equalTests": 3,
         "needsAccountData": false,
         "wayOut": [],
         "secondsToPerson": 100,
@@ -727,13 +732,15 @@
         "checkedOn": "2026-11-14",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
       "lastTestCall": null,
       "route": null,
       "waitOnHold": null,
       "callLength": null,
       "lastTestedOn": null,
-      "lastChangedOn": "2026-11-22",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/call/irs-from-abroad",
         "reachGuide": null
@@ -745,7 +752,7 @@
       "kind": "government",
       "department": "individual income tax enquiries",
       "country": "CA",
-      "status": "listed",
+      "status": "checked",
       "phone": {
         "e164": "+18009598281",
         "display": "+1 800-959-8281"
@@ -779,11 +786,20 @@
       "reachableFromAbroad": {
         "lastConfirmedOn": "2026-11-25"
       },
-      "lastTestCall": null,
+      "lastTestCall": {
+        "testedAt": "2026-11-25T16:04:17.585Z",
+        "number": "+18009598281",
+        "heard": "message",
+        "firstAnnouncement": "The Canada Revenue Agency (CRA) individual tax inquiry line opens with a privacy notice explaining that your social insurance number is collected to verify identity. It then offers automated services such as ordering forms and checking registered plans.",
+        "options": [],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en"
+      },
       "route": null,
       "waitOnHold": null,
       "callLength": null,
-      "lastTestedOn": null,
+      "lastTestedOn": "2026-11-25",
       "lastChangedOn": "2026-11-25",
       "links": {
         "guide": "https://pay-call.com/call/cra-from-abroad",
@@ -895,13 +911,15 @@
         "checkedOn": "2026-10-25",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
       "lastTestCall": null,
       "route": null,
       "waitOnHold": null,
       "callLength": null,
       "lastTestedOn": null,
-      "lastChangedOn": "2026-11-22",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/call/bank-of-america-from-abroad",
         "reachGuide": null
@@ -1153,6 +1171,7 @@
           "2026-11-27",
           "2026-11-25"
         ],
+        "equalTests": 3,
         "needsAccountData": false,
         "wayOut": [
           "I don't have a card"
@@ -1186,7 +1205,7 @@
       "kind": "bank",
       "department": "Credit-card online account support",
       "country": "US",
-      "status": "listed",
+      "status": "checked",
       "phone": {
         "e164": "+18667500873",
         "display": "1-866-750-0873"
@@ -1199,13 +1218,26 @@
         "checkedOn": "2026-10-25",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-27T19:33:46.676Z",
+        "number": "+18667500873",
+        "heard": "private",
+        "firstAnnouncement": "The Capital One line greets callers and asks them to say or enter their 16-digit card number. Callers without a card, or whose card is lost or stolen, can say so instead.",
+        "options": [],
+        "asksFirstFor": [
+          "cardNumber"
+        ],
+        "voiceAssistant": true,
+        "language": "en"
+      },
       "route": null,
       "waitOnHold": null,
       "callLength": null,
-      "lastTestedOn": null,
-      "lastChangedOn": "2026-11-22",
+      "lastTestedOn": "2026-11-27",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/call/capital-one-from-abroad",
         "reachGuide": null
@@ -1248,7 +1280,7 @@
       "kind": "bank",
       "department": "U.S. toll-free (often blocked from abroad)",
       "country": "US",
-      "status": "listed",
+      "status": "checked",
       "phone": {
         "e164": "+18005284800",
         "display": "1-800-528-4800"
@@ -1261,13 +1293,27 @@
         "checkedOn": "2026-10-25",
         "type": "website"
       },
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-27T17:53:49.248Z",
+        "number": "+18005284800",
+        "heard": "private",
+        "firstAnnouncement": "The line welcomes callers to American Express and immediately asks for the 15-digit card number or Social Security number. Callers without an account can say \"no account\".",
+        "options": [],
+        "asksFirstFor": [
+          "cardNumber",
+          "ssn"
+        ],
+        "voiceAssistant": true,
+        "language": "en"
+      },
       "route": null,
       "waitOnHold": null,
       "callLength": null,
-      "lastTestedOn": null,
-      "lastChangedOn": "2026-11-22",
+      "lastTestedOn": "2026-11-27",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/call/american-express-from-abroad",
         "reachGuide": null
@@ -1324,7 +1370,7 @@
       "kind": "bank",
       "department": "U.S. toll-free (often blocked from abroad)",
       "country": "US",
-      "status": "listed",
+      "status": "checked",
       "phone": {
         "e164": "+18008722657",
         "display": "1-800-872-2657"
@@ -1337,13 +1383,28 @@
         "checkedOn": "2026-10-25",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-27T18:23:48.823Z",
+        "number": "+18008722657",
+        "heard": "private",
+        "firstAnnouncement": "The U.S. Bank line greets callers and immediately asks them to say or enter their account, card or Social Security number.",
+        "options": [],
+        "asksFirstFor": [
+          "accountNumber",
+          "cardNumber",
+          "ssn"
+        ],
+        "voiceAssistant": false,
+        "language": "en"
+      },
       "route": null,
       "waitOnHold": null,
       "callLength": null,
-      "lastTestedOn": null,
-      "lastChangedOn": "2026-11-22",
+      "lastTestedOn": "2026-11-27",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/call/us-bank-from-abroad",
         "reachGuide": null
@@ -1609,7 +1670,7 @@
       "kind": "bank",
       "department": "U.S. toll-free (often blocked from abroad)",
       "country": "US",
-      "status": "listed",
+      "status": "checked",
       "phone": {
         "e164": "+18004354000",
         "display": "1-800-435-4000"
@@ -1622,13 +1683,31 @@
         "checkedOn": "2026-10-25",
         "type": "website"
       },
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-27T17:33:48.006Z",
+        "number": "+18004354000",
+        "heard": "private",
+        "firstAnnouncement": "The line greets callers to Charles Schwab and first asks for the last 4 digits of their Social Security number. To open a new account, callers can say \"new account\" or press 8.",
+        "options": [
+          {
+            "key": "8",
+            "label": "Open a new account"
+          }
+        ],
+        "asksFirstFor": [
+          "ssn"
+        ],
+        "voiceAssistant": false,
+        "language": "en"
+      },
       "route": null,
       "waitOnHold": null,
       "callLength": null,
-      "lastTestedOn": null,
-      "lastChangedOn": "2026-11-22",
+      "lastTestedOn": "2026-11-27",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/call/charles-schwab-from-abroad",
         "reachGuide": null
@@ -1700,44 +1779,15 @@
         "checkedOn": "2026-10-25",
         "type": "website"
       },
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
       "lastTestCall": null,
       "route": null,
       "waitOnHold": null,
       "callLength": null,
       "lastTestedOn": null,
-      "lastChangedOn": "2026-11-22",
-      "links": {
-        "guide": "https://pay-call.com/call/fidelity-from-abroad",
-        "reachGuide": null
-      }
-    },
-    {
-      "id": "fidelity-u-s-direct-dial",
-      "name": "Fidelity",
-      "kind": "bank",
-      "department": "U.S. direct-dial (check your carrier's international rate)",
-      "country": "US",
-      "status": "listed",
-      "phone": {
-        "e164": "+18179593500",
-        "display": "+1 817-959-3500"
-      },
-      "otherNumbers": [],
-      "hours": null,
-      "officialTip": null,
-      "source": {
-        "url": "https://www.fidelity.com/customer-service/overview",
-        "checkedOn": "2026-10-25",
-        "type": "website"
-      },
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
-      "route": null,
-      "waitOnHold": null,
-      "callLength": null,
-      "lastTestedOn": null,
-      "lastChangedOn": "2026-11-22",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/call/fidelity-from-abroad",
         "reachGuide": null
@@ -1749,7 +1799,7 @@
       "kind": "bank",
       "department": "Personal investors · U.S. toll-free",
       "country": "US",
-      "status": "listed",
+      "status": "checked",
       "phone": {
         "e164": "+18776627447",
         "display": "1-877-662-7447"
@@ -1780,13 +1830,27 @@
         "checkedOn": "2026-11-23",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-27T13:42:36.976Z",
+        "number": "+18776627447",
+        "heard": "private",
+        "firstAnnouncement": "The line thanks callers for calling Vanguard and asks existing account holders to enter the last 4 digits of their Social Security or employer ID number. Callers without an existing account can say \"I'm just getting started\".",
+        "options": [],
+        "asksFirstFor": [
+          "ssn",
+          "taxId"
+        ],
+        "voiceAssistant": false,
+        "language": "en"
+      },
       "route": null,
       "waitOnHold": null,
       "callLength": null,
-      "lastTestedOn": null,
-      "lastChangedOn": "2026-11-23",
+      "lastTestedOn": "2026-11-27",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/call/vanguard-from-abroad",
         "reachGuide": null
@@ -1947,14 +2011,35 @@
         "type": "number-page"
       },
       "reachableFromAbroad": {
-        "lastConfirmedOn": "2026-11-24"
+        "lastConfirmedOn": "2026-11-27"
       },
       "lastTestCall": {
-        "testedAt": "2026-11-24T17:17:40.346Z",
-        "number": "+12123570026",
-        "heard": "message",
-        "firstAnnouncement": "The line greets callers to Marcus by Goldman Sachs, notes its 2023 GoBankingRates best savings account award, and points to the FAQs at marcus.com or logged-in chat. Callers who stay on the line are directed by an automated system.",
-        "options": [],
+        "testedAt": "2026-11-27T19:13:46.958Z",
+        "number": "+18557307283",
+        "heard": "menu",
+        "firstAnnouncement": "The line greets callers to Marcus by Goldman Sachs and offers a menu: 1 to open an account, 2 to make a transfer, 3 to dispute a transaction, 4 for all other inquiries, 5 to repeat the menu.",
+        "options": [
+          {
+            "key": "1",
+            "label": "Open an account"
+          },
+          {
+            "key": "2",
+            "label": "Make a transfer"
+          },
+          {
+            "key": "3",
+            "label": "Dispute a transaction"
+          },
+          {
+            "key": "4",
+            "label": "All other inquiries"
+          },
+          {
+            "key": "5",
+            "label": "Repeat menu"
+          }
+        ],
         "asksFirstFor": [],
         "voiceAssistant": false,
         "language": "en"
@@ -1962,8 +2047,8 @@
       "route": null,
       "waitOnHold": null,
       "callLength": null,
-      "lastTestedOn": "2026-11-24",
-      "lastChangedOn": "2026-11-24",
+      "lastTestedOn": "2026-11-27",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/call/goldman-sachs-from-abroad",
         "reachGuide": null
@@ -1975,7 +2060,7 @@
       "kind": "bank",
       "department": "U.S. toll-free (often blocked from abroad)",
       "country": "US",
-      "status": "listed",
+      "status": "checked",
       "phone": {
         "e164": "+18662265638",
         "display": "1-866-226-5638"
@@ -2014,13 +2099,41 @@
         "checkedOn": "2026-11-15",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-27T13:22:40.263Z",
+        "number": "+18662265638",
+        "heard": "menu",
+        "firstAnnouncement": "The line welcomes callers to Synchrony Bank and offers a keypad menu. Press 1 for Synchrony credit cards, 2 for CD renewals, 3 for service on an existing account, or 4 to open a new account.",
+        "options": [
+          {
+            "key": "1",
+            "label": "Synchrony credit cards"
+          },
+          {
+            "key": "2",
+            "label": "CD renewals"
+          },
+          {
+            "key": "3",
+            "label": "Existing account service"
+          },
+          {
+            "key": "4",
+            "label": "Open a new account"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en"
+      },
       "route": null,
       "waitOnHold": null,
       "callLength": null,
-      "lastTestedOn": null,
-      "lastChangedOn": "2026-11-23",
+      "lastTestedOn": "2026-11-27",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/call/synchrony-from-abroad",
         "reachGuide": null
@@ -2032,7 +2145,7 @@
       "kind": "bank",
       "department": "U.S. direct-dial (check your carrier's international rate)",
       "country": "US",
-      "status": "listed",
+      "status": "checked",
       "phone": {
         "e164": "+19375343624",
         "display": "+1 937-534-3624"
@@ -2071,13 +2184,41 @@
         "checkedOn": "2026-11-15",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-27T14:02:40.117Z",
+        "number": "+19375343624",
+        "heard": "menu",
+        "firstAnnouncement": "The line greets callers to Synchrony Bank and offers a keypad menu: 1 for Synchrony Bank credit cards, 2 for CD renewals, 3 for service on an existing account, 4 to open a new account.",
+        "options": [
+          {
+            "key": "1",
+            "label": "Synchrony Bank credit card"
+          },
+          {
+            "key": "2",
+            "label": "CD renewals"
+          },
+          {
+            "key": "3",
+            "label": "Existing account service"
+          },
+          {
+            "key": "4",
+            "label": "Open a new account"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en"
+      },
       "route": null,
       "waitOnHold": null,
       "callLength": null,
-      "lastTestedOn": null,
-      "lastChangedOn": "2026-11-23",
+      "lastTestedOn": "2026-11-27",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/call/synchrony-from-abroad",
         "reachGuide": null
@@ -2120,7 +2261,7 @@
       "kind": "bank",
       "department": "U.S. toll-free line (check routing with your carrier)",
       "country": "US",
-      "status": "listed",
+      "status": "checked",
       "phone": {
         "e164": "+18554567634",
         "display": "1-855-456-7634"
@@ -2159,13 +2300,24 @@
         "checkedOn": "2026-11-15",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-27T13:12:35.057Z",
+        "number": "+18554567634",
+        "heard": "menu",
+        "firstAnnouncement": "An AI-powered SoFi virtual assistant greets callers and asks whether they have a SoFi product or a pending application.",
+        "options": [],
+        "asksFirstFor": [],
+        "voiceAssistant": true,
+        "language": "en"
+      },
       "route": null,
       "waitOnHold": null,
       "callLength": null,
-      "lastTestedOn": null,
-      "lastChangedOn": "2026-11-23",
+      "lastTestedOn": "2026-11-27",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/call/sofi-from-abroad",
         "reachGuide": null
@@ -2177,7 +2329,7 @@
       "kind": "bank",
       "department": "U.S. toll-free (often blocked from abroad)",
       "country": "US",
-      "status": "listed",
+      "status": "checked",
       "phone": {
         "e164": "+18444878478",
         "display": "1-844-487-8478"
@@ -2215,13 +2367,29 @@
         "checkedOn": "2026-11-15",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-27T13:02:37.714Z",
+        "number": "+18444878478",
+        "heard": "menu",
+        "firstAnnouncement": "The line greets callers to Truist and offers to continue using only the keypad by pressing 7. A voice assistant then asks how it can help.",
+        "options": [
+          {
+            "key": "7",
+            "label": "Continue using keypad only"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": true,
+        "language": "en"
+      },
       "route": null,
       "waitOnHold": null,
       "callLength": null,
-      "lastTestedOn": null,
-      "lastChangedOn": "2026-11-23",
+      "lastTestedOn": "2026-11-27",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/call/truist-from-abroad",
         "reachGuide": null
@@ -2233,7 +2401,7 @@
       "kind": "bank",
       "department": "U.S. direct-dial (check your carrier's international rate)",
       "country": "US",
-      "status": "listed",
+      "status": "checked",
       "phone": {
         "e164": "+19109148250",
         "display": "+1 910-914-8250"
@@ -2271,13 +2439,29 @@
         "checkedOn": "2026-11-15",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-27T13:52:39.240Z",
+        "number": "+19109148250",
+        "heard": "menu",
+        "firstAnnouncement": "The Truist line opens with a recording notice, then a voice assistant asks how it can help, with examples like checking a balance or making a payment. Callers can press 7 to continue using only the keypad.",
+        "options": [
+          {
+            "key": "7",
+            "label": "Continue using keypad only"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": true,
+        "language": "en"
+      },
       "route": null,
       "waitOnHold": null,
       "callLength": null,
-      "lastTestedOn": null,
-      "lastChangedOn": "2026-11-23",
+      "lastTestedOn": "2026-11-27",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/call/truist-from-abroad",
         "reachGuide": null
@@ -2289,7 +2473,7 @@
       "kind": "bank",
       "department": "U.S. toll-free line (check routing with your carrier)",
       "country": "US",
-      "status": "listed",
+      "status": "checked",
       "phone": {
         "e164": "+18442446363",
         "display": "1-844-244-6363"
@@ -2302,13 +2486,45 @@
         "checkedOn": "2026-11-15",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-27T18:53:48.575Z",
+        "number": "+18442446363",
+        "heard": "menu",
+        "firstAnnouncement": "The line thanks callers for calling Chime and looks up an account by phone number. Options: 1 for existing members, 2 to join or learn about products, 3 to report fraud, 4 to verify a member's bank account, 9 for all other questions.",
+        "options": [
+          {
+            "key": "1",
+            "label": "Existing Chime account"
+          },
+          {
+            "key": "2",
+            "label": "Join Chime / product info"
+          },
+          {
+            "key": "3",
+            "label": "Report fraud or unauthorized activity"
+          },
+          {
+            "key": "4",
+            "label": "Verify a member's bank account"
+          },
+          {
+            "key": "9",
+            "label": "All other questions"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en"
+      },
       "route": null,
       "waitOnHold": null,
       "callLength": null,
-      "lastTestedOn": null,
-      "lastChangedOn": "2026-11-22",
+      "lastTestedOn": "2026-11-27",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/call/chime-from-abroad",
         "reachGuide": null
@@ -3011,13 +3227,15 @@
         "checkedOn": "2026-11-15",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-28"
+      },
       "lastTestCall": null,
       "route": null,
       "waitOnHold": null,
       "callLength": null,
       "lastTestedOn": null,
-      "lastChangedOn": "2026-11-23",
+      "lastChangedOn": "2026-11-28",
       "links": {
         "guide": "https://pay-call.com/call/american-airlines-from-abroad",
         "reachGuide": null
@@ -3414,13 +3632,20 @@
         "checkedOn": "2026-11-15",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
       "lastTestCall": null,
       "route": null,
       "waitOnHold": null,
-      "callLength": null,
+      "callLength": {
+        "lowMinutes": 10,
+        "highMinutes": 15,
+        "medianMinutes": 12,
+        "method": "measured"
+      },
       "lastTestedOn": null,
-      "lastChangedOn": "2026-11-22",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/call/southwest-from-abroad",
         "reachGuide": null
@@ -5184,7 +5409,7 @@
         "type": "number-page"
       },
       "reachableFromAbroad": {
-        "lastConfirmedOn": "2026-11-27"
+        "lastConfirmedOn": "2026-11-28"
       },
       "lastTestCall": {
         "testedAt": "2026-11-27T02:48:23.134Z",
@@ -5210,7 +5435,7 @@
         "method": "measured"
       },
       "lastTestedOn": "2026-11-27",
-      "lastChangedOn": "2026-11-27",
+      "lastChangedOn": "2026-11-28",
       "links": {
         "guide": "https://pay-call.com/call/apple-from-abroad",
         "reachGuide": null
@@ -5508,13 +5733,15 @@
         "checkedOn": "2026-11-23",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-28"
+      },
       "lastTestCall": null,
       "route": null,
       "waitOnHold": null,
       "callLength": null,
       "lastTestedOn": null,
-      "lastChangedOn": "2026-11-23",
+      "lastChangedOn": "2026-11-28",
       "links": {
         "guide": "https://pay-call.com/call/ups-from-abroad",
         "reachGuide": null
@@ -5561,6 +5788,7 @@
         "confirmedOn": [
           "2026-11-24"
         ],
+        "equalTests": 2,
         "needsAccountData": false,
         "wayOut": [
           "not a member",
@@ -5609,7 +5837,7 @@
       "kind": "bank",
       "department": "U.S. direct-dial (check your carrier's international rate)",
       "country": "US",
-      "status": "listed",
+      "status": "checked",
       "phone": {
         "e164": "+17032558837",
         "display": "+1 703-255-8837"
@@ -5622,13 +5850,27 @@
         "checkedOn": "2026-10-23",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-27T17:13:56.574Z",
+        "number": "+17032558837",
+        "heard": "private",
+        "firstAnnouncement": "The Navy Federal Credit Union line first asks callers to say or enter their access number or full Social Security number. Callers can also say \"not a member\", \"hold on\" or \"more information\".",
+        "options": [],
+        "asksFirstFor": [
+          "accessCode",
+          "ssn"
+        ],
+        "voiceAssistant": false,
+        "language": "en"
+      },
       "route": null,
       "waitOnHold": null,
       "callLength": null,
-      "lastTestedOn": null,
-      "lastChangedOn": "2026-11-22",
+      "lastTestedOn": "2026-11-27",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/call/navy-federal-from-abroad",
         "reachGuide": null
@@ -7397,13 +7639,15 @@
         "checkedOn": "2026-10-30",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
       "lastTestCall": null,
       "route": null,
       "waitOnHold": null,
       "callLength": null,
       "lastTestedOn": null,
-      "lastChangedOn": "2026-11-22",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/call/service-canada-from-abroad",
         "reachGuide": null
@@ -7451,7 +7695,7 @@
       "kind": "bank",
       "department": "Everyday banking · Canadian toll-free line",
       "country": "CA",
-      "status": "listed",
+      "status": "checked",
       "phone": {
         "e164": "+18772255266",
         "display": "1-877-225-5266"
@@ -7464,13 +7708,33 @@
         "checkedOn": "2026-11-15",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-27T19:43:48.150Z",
+        "number": "+18772255266",
+        "heard": "menu",
+        "firstAnnouncement": "The line welcomes callers to BMO and offers English service with 1; pressing * repeats the options.",
+        "options": [
+          {
+            "key": "1",
+            "label": "English"
+          },
+          {
+            "key": "*",
+            "label": "Repeat options"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en"
+      },
       "route": null,
       "waitOnHold": null,
       "callLength": null,
-      "lastTestedOn": null,
-      "lastChangedOn": "2026-11-22",
+      "lastTestedOn": "2026-11-27",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/directory/ca/banks/providers/bmo",
         "reachGuide": null
@@ -7768,7 +8032,7 @@
       "kind": "bank",
       "department": "Everyday banking · Canadian toll-free line",
       "country": "CA",
-      "status": "listed",
+      "status": "checked",
       "phone": {
         "e164": "+18444372265",
         "display": "1-844-437-2265"
@@ -7781,13 +8045,37 @@
         "checkedOn": "2026-11-15",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-27T19:03:49.133Z",
+        "number": "+18444372265",
+        "heard": "menu",
+        "firstAnnouncement": "The line welcomes callers to EQ Bank and offers a keypad menu: 1 for EQ Bank card inquiries, 2 for registered products such as a TFSA, 3 for personal banking, followed by a business banking option.",
+        "options": [
+          {
+            "key": "1",
+            "label": "EQ Bank card inquiries"
+          },
+          {
+            "key": "2",
+            "label": "Registered products (e.g. TFSA)"
+          },
+          {
+            "key": "3",
+            "label": "Personal banking services"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "en"
+      },
       "route": null,
       "waitOnHold": null,
       "callLength": null,
-      "lastTestedOn": null,
-      "lastChangedOn": "2026-11-22",
+      "lastTestedOn": "2026-11-27",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/directory/ca/banks/providers/eq-bank",
         "reachGuide": null
@@ -7994,7 +8282,7 @@
       "kind": "bank",
       "department": "Everyday banking · Canadian toll-free line",
       "country": "CA",
-      "status": "listed",
+      "status": "checked",
       "phone": {
         "e164": "+18004726842",
         "display": "1-800-472-6842"
@@ -8007,13 +8295,26 @@
         "checkedOn": "2026-11-15",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-27T17:43:48.123Z",
+        "number": "+18004726842",
+        "heard": "private",
+        "firstAnnouncement": "The line welcomes callers to Scotiabank and asks them to key in or say their Scotia card or credit card number. Callers can press the pound key or say \"hold on\" if they need a moment to find it.",
+        "options": [],
+        "asksFirstFor": [
+          "cardNumber"
+        ],
+        "voiceAssistant": false,
+        "language": "en"
+      },
       "route": null,
       "waitOnHold": null,
       "callLength": null,
-      "lastTestedOn": null,
-      "lastChangedOn": "2026-11-22",
+      "lastTestedOn": "2026-11-27",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/directory/ca/banks/providers/scotiabank",
         "reachGuide": null
@@ -8025,7 +8326,7 @@
       "kind": "bank",
       "department": "Credit cards · Canadian toll-free line",
       "country": "CA",
-      "status": "listed",
+      "status": "checked",
       "phone": {
         "e164": "+18003876466",
         "display": "1-800-387-6466"
@@ -8038,13 +8339,36 @@
         "checkedOn": "2026-11-15",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-27T17:23:48.733Z",
+        "number": "+18003876466",
+        "heard": "private",
+        "firstAnnouncement": "The line welcomes callers to Scotiabank and asks them to key in or say their credit card or line of credit account number. Callers without a credit card or line of credit can press star.",
+        "options": [
+          {
+            "key": "#",
+            "label": "Hold on to find number"
+          },
+          {
+            "key": "*",
+            "label": "No credit card or line of credit"
+          }
+        ],
+        "asksFirstFor": [
+          "cardNumber",
+          "accountNumber"
+        ],
+        "voiceAssistant": false,
+        "language": "en"
+      },
       "route": null,
       "waitOnHold": null,
       "callLength": null,
-      "lastTestedOn": null,
-      "lastChangedOn": "2026-11-22",
+      "lastTestedOn": "2026-11-27",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/directory/ca/banks/providers/scotiabank",
         "reachGuide": null
@@ -8100,13 +8424,15 @@
         "checkedOn": "2026-11-15",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
       "lastTestCall": null,
       "route": null,
       "waitOnHold": null,
       "callLength": null,
       "lastTestedOn": null,
-      "lastChangedOn": "2026-11-22",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/directory/ca/banks/providers/td-canada-trust",
         "reachGuide": null
@@ -8131,13 +8457,15 @@
         "checkedOn": "2026-11-15",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
       "lastTestCall": null,
       "route": null,
       "waitOnHold": null,
       "callLength": null,
       "lastTestedOn": null,
-      "lastChangedOn": "2026-11-22",
+      "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/directory/ca/banks/providers/td-canada-trust",
         "reachGuide": null
@@ -12426,13 +12754,15 @@
         "checkedOn": "2026-11-15",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-28"
+      },
       "lastTestCall": null,
       "route": null,
       "waitOnHold": null,
       "callLength": null,
       "lastTestedOn": null,
-      "lastChangedOn": "2026-11-27",
+      "lastChangedOn": "2026-11-28",
       "links": {
         "guide": "https://pay-call.com/directory/gb/insurance/providers/bupa",
         "reachGuide": null
@@ -12930,13 +13260,15 @@
         "checkedOn": "2026-11-15",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-28"
+      },
       "lastTestCall": null,
       "route": null,
       "waitOnHold": null,
       "callLength": null,
       "lastTestedOn": null,
-      "lastChangedOn": "2026-11-23",
+      "lastChangedOn": "2026-11-28",
       "links": {
         "guide": "https://pay-call.com/call/british-airways-from-abroad",
         "reachGuide": null
@@ -20048,13 +20380,15 @@
         "checkedOn": "2026-11-23",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-28"
+      },
       "lastTestCall": null,
       "route": null,
       "waitOnHold": null,
       "callLength": null,
       "lastTestedOn": null,
-      "lastChangedOn": "2026-11-23",
+      "lastChangedOn": "2026-11-28",
       "links": {
         "guide": "https://pay-call.com/directory/de/insurance/providers/techniker-krankenkasse",
         "reachGuide": null
@@ -20190,7 +20524,7 @@
       "kind": "insurance",
       "department": "Emergency line abroad",
       "country": "DE",
-      "status": "listed",
+      "status": "checked",
       "phone": {
         "e164": "+4989380023456",
         "display": "+49 89 38 00 23 456"
@@ -20223,13 +20557,24 @@
         "checkedOn": "2026-11-23",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-28"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-28T00:33:51.591Z",
+        "number": "+4989380023456",
+        "heard": "queue",
+        "firstAnnouncement": "The line welcomes callers to the Allianz Private Krankenversicherung service centre and says all staff are busy, placing callers on hold.",
+        "options": [],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "de"
+      },
       "route": null,
       "waitOnHold": null,
       "callLength": null,
-      "lastTestedOn": null,
-      "lastChangedOn": "2026-11-23",
+      "lastTestedOn": "2026-11-28",
+      "lastChangedOn": "2026-11-28",
       "links": {
         "guide": "https://pay-call.com/directory/de/insurance/providers/allianz-private-krankenversicherung",
         "reachGuide": null
@@ -20241,7 +20586,7 @@
       "kind": "insurance",
       "department": "Travel insurance emergency line abroad",
       "country": "DE",
-      "status": "listed",
+      "status": "checked",
       "phone": {
         "e164": "+498962424245",
         "display": "+49 89 62 42 42 45"
@@ -20274,13 +20619,37 @@
         "checkedOn": "2026-11-23",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-28"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-28T00:43:50.811Z",
+        "number": "+498962424245",
+        "heard": "menu",
+        "firstAnnouncement": "The line welcomes callers to the Allianz Reiseschutz emergency centre. Press 1 for questions about your policy or benefits, 2 to report a claim or ask about an existing claim, 3 for an acute medical emergency while travelling or medical advice on cancelling or cutting short a trip.",
+        "options": [
+          {
+            "key": "1",
+            "label": "Policy or benefits questions"
+          },
+          {
+            "key": "2",
+            "label": "Report or existing claim"
+          },
+          {
+            "key": "3",
+            "label": "Medical emergency or medical advice on cancellation"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "de"
+      },
       "route": null,
       "waitOnHold": null,
       "callLength": null,
-      "lastTestedOn": null,
-      "lastChangedOn": "2026-11-23",
+      "lastTestedOn": "2026-11-28",
+      "lastChangedOn": "2026-11-28",
       "links": {
         "guide": "https://pay-call.com/directory/de/insurance/providers/allianz-travel",
         "reachGuide": null
@@ -20292,7 +20661,7 @@
       "kind": "insurance",
       "department": "Customer service",
       "country": "DE",
-      "status": "listed",
+      "status": "checked",
       "phone": {
         "e164": "+49956196101",
         "display": "+49 9561 96 101"
@@ -20330,13 +20699,24 @@
         "checkedOn": "2026-11-23",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-28"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-28T07:00:39.638Z",
+        "number": "+49956196101",
+        "heard": "menu",
+        "firstAnnouncement": "The line greets callers on behalf of HUK-COBURG and a voice assistant asks them to state their concern in one sentence.",
+        "options": [],
+        "asksFirstFor": [],
+        "voiceAssistant": true,
+        "language": "de"
+      },
       "route": null,
       "waitOnHold": null,
       "callLength": null,
-      "lastTestedOn": null,
-      "lastChangedOn": "2026-11-23",
+      "lastTestedOn": "2026-11-28",
+      "lastChangedOn": "2026-11-28",
       "links": {
         "guide": "https://pay-call.com/directory/de/insurance/providers/huk-coburg",
         "reachGuide": null
@@ -20379,7 +20759,7 @@
       "kind": "insurance",
       "department": "Breakdown and emergency help abroad",
       "country": "DE",
-      "status": "listed",
+      "status": "checked",
       "phone": {
         "e164": "+4989222222",
         "display": "+49 89 22 22 22"
@@ -20412,13 +20792,24 @@
         "checkedOn": "2026-11-23",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-28"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-28T00:23:46.658Z",
+        "number": "+4989222222",
+        "heard": "menu",
+        "firstAnnouncement": "The line greets callers as the ADAC Auslandsnotruf (foreign emergency service), asks them to have their membership number ready, and to say \"yes\" if calling about an already reported breakdown or accident. Callers are then connected to the responsible emergency station.",
+        "options": [],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "de"
+      },
       "route": null,
       "waitOnHold": null,
       "callLength": null,
-      "lastTestedOn": null,
-      "lastChangedOn": "2026-11-23",
+      "lastTestedOn": "2026-11-28",
+      "lastChangedOn": "2026-11-28",
       "links": {
         "guide": "https://pay-call.com/directory/de/insurance/providers/adac",
         "reachGuide": null
@@ -20597,7 +20988,9 @@
         "checkedOn": "2026-11-03",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
       "lastTestCall": null,
       "route": null,
       "waitOnHold": null,
@@ -20707,7 +21100,9 @@
         "checkedOn": "2026-11-03",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
       "lastTestCall": null,
       "route": null,
       "waitOnHold": null,
@@ -20738,7 +21133,9 @@
         "checkedOn": "2026-11-26",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
       "lastTestCall": null,
       "route": null,
       "waitOnHold": null,
@@ -20756,7 +21153,7 @@
       "kind": "bank",
       "department": "Customer service · German direct number",
       "country": "DE",
-      "status": "listed",
+      "status": "checked",
       "phone": {
         "e164": "+4941067082500",
         "display": "+49 4106 708 25 00"
@@ -20769,12 +21166,23 @@
         "checkedOn": "2026-11-26",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-27T12:32:35.631Z",
+        "number": "+4941067082500",
+        "heard": "menu",
+        "firstAnnouncement": "The line greets callers at comdirect and a voice assistant asks whether they are already a customer.",
+        "options": [],
+        "asksFirstFor": [],
+        "voiceAssistant": true,
+        "language": "de"
+      },
       "route": null,
       "waitOnHold": null,
       "callLength": null,
-      "lastTestedOn": null,
+      "lastTestedOn": "2026-11-27",
       "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/directory/de/banks/providers/comdirect",
@@ -20831,7 +21239,9 @@
         "checkedOn": "2026-11-26",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
       "lastTestCall": null,
       "route": null,
       "waitOnHold": null,
@@ -20849,7 +21259,7 @@
       "kind": "bank",
       "department": "Credit cards · German direct number",
       "country": "DE",
-      "status": "listed",
+      "status": "checked",
       "phone": {
         "e164": "+4969342224",
         "display": "+49 69 34 22 24"
@@ -20862,12 +21272,32 @@
         "checkedOn": "2026-11-26",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-27T12:42:36.757Z",
+        "number": "+4969342224",
+        "heard": "menu",
+        "firstAnnouncement": "The line welcomes callers to ING and offers a menu: say \"allgemein\" or press 1 for customer orders or product questions, say \"Karte sperren\" or press 2 to block a Giro or Visa card, or say \"Geldautomat\" to report an ATM fault.",
+        "options": [
+          {
+            "key": "1",
+            "label": "Orders or product questions (general)"
+          },
+          {
+            "key": "2",
+            "label": "Block Giro or Visa card"
+          }
+        ],
+        "asksFirstFor": [],
+        "voiceAssistant": false,
+        "language": "de"
+      },
       "route": null,
       "waitOnHold": null,
       "callLength": null,
-      "lastTestedOn": null,
+      "lastTestedOn": "2026-11-27",
       "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/directory/de/banks/providers/ing",
@@ -20880,7 +21310,7 @@
       "kind": "bank",
       "department": "Everyday banking · German direct number",
       "country": "DE",
-      "status": "listed",
+      "status": "checked",
       "phone": {
         "e164": "+4921190020111",
         "display": "+49 211 900 20 111"
@@ -20893,12 +21323,25 @@
         "checkedOn": "2026-11-26",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
-      "lastTestCall": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
+      "lastTestCall": {
+        "testedAt": "2026-11-27T12:12:36.331Z",
+        "number": "+4921190020111",
+        "heard": "private",
+        "firstAnnouncement": "The line welcomes callers to TARGOBANK and asks existing customers to enter their 10-digit account number. Otherwise callers can say \"Neukunde\" (new customer), \"Karte sperren\" (block a card) or \"Termin\" (branch appointment).",
+        "options": [],
+        "asksFirstFor": [
+          "accountNumber"
+        ],
+        "voiceAssistant": false,
+        "language": "de"
+      },
       "route": null,
       "waitOnHold": null,
       "callLength": null,
-      "lastTestedOn": null,
+      "lastTestedOn": "2026-11-27",
       "lastChangedOn": "2026-11-27",
       "links": {
         "guide": "https://pay-call.com/directory/de/banks/providers/targobank",
@@ -22977,7 +23420,7 @@
         "type": "number-page"
       },
       "reachableFromAbroad": {
-        "lastConfirmedOn": "2026-11-26"
+        "lastConfirmedOn": "2026-11-27"
       },
       "lastTestCall": null,
       "route": null,
@@ -24527,7 +24970,9 @@
         "checkedOn": "2026-11-26",
         "type": "number-page"
       },
-      "reachableFromAbroad": null,
+      "reachableFromAbroad": {
+        "lastConfirmedOn": "2026-11-27"
+      },
       "lastTestCall": null,
       "route": null,
       "waitOnHold": null,

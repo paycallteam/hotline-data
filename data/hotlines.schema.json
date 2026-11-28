@@ -388,7 +388,13 @@
                   "items": {
                     "type": "string",
                     "format": "date"
-                  }
+                  },
+                  "description": "Days of the equal tests, newest first, each day once"
+                },
+                "equalTests": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "description": "How many tests in a row found this route; robot routes are published from 2"
                 },
                 "needsAccountData": {
                   "type": "boolean"
